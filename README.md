@@ -1,4 +1,4 @@
-# PIXEL2_system_mods
+# GKD PIXEL2 system mods
 mods in stock SYSTEM file
 
 These are minor changes made to the original system such as script improvements by unpacking the original SYSTEM file from the boot partition with the following commands:
