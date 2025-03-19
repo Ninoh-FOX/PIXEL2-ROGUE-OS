@@ -1,0 +1,8 @@
+title=Commander
+description=Dingux Commander
+icon=/storage/iux/apps/DinguxCommander/commander.png
+exec=/storage/iux/apps/DinguxCommander/DinguxCommander
+selectorbrowser=false
+wrapper=true
+thiscore=no
+strcore=no

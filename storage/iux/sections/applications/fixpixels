@@ -1,0 +1,8 @@
+title=FixPixels
+description=fullscreen RGB
+icon=/storage/iux/apps/fixpixels/pixel.png
+exec=/storage/iux/apps/fixpixels/fixpixels
+selectorbrowser=false
+wrapper=true
+thiscore=no
+strcore=no
