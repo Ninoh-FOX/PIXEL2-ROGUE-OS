@@ -7,22 +7,59 @@
 
 GAME_DIR="/storage/roms/pico-8/"
 
-case ${HW_ARCH} in
-  aarch64)
-    STATIC_BIN="pico8_64"
-  ;;
-  *)
-    STATIC_BIN="pico8_dyn"
-  ;;
-esac
+if [ ! -d "/storage/pico" ]; then
+  mkdir /storage/pico
+
+  cp -R /usr/share/pico-8/* /storage/pico/
+
+  # Create the content for pico.sh
+  PICO_SH_CONTENT='#!/bin/bash
+
+cd $(dirname "$0")
+export HOME=/storage/pico
+  
+if [ "$1" == "/storage/roms/pico-8/Splore.png" ]; then
+
+    export LD_LIBRARY_PATH="$HOME/lib1:${LD_LIBRARY_PATH}"
+    /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -splore -root_path /storage/roms/pico-8 -joystick 0
+
+else
+
+    export LD_LIBRARY_PATH="$HOME/lib2:${LD_LIBRARY_PATH}"
+    /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -run "$1" -root_path /storage/roms/pico-8 -joystick 0
+
+fi
+
+for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
+    base_name="$(basename "$file" .p8.png)"
+    roms="/storage/roms/pico-8/$base_name"
+    images="/storage/roms/pico-8/images/$base_name"
+
+    if [ ! -e "$roms.p8" ]; then
+       cp "$file" "$roms.p8"
+       cp "$file" "$images.png"
+    fi
+done
+
+sync
+'
+
+  # Create the pico.sh file and make it executable
+  echo "$PICO_SH_CONTENT" > /storage/pico/pico.sh
+  chmod +x /storage/pico/pico.sh
+fi
+
+export HOME="/storage/pico"
 
 # check if the file being launched contains "Splore" and if so launch Pico-8 Splore otherwise run the game directly
 shopt -s nocasematch
 if [[ "${1}" == *splore* ]]; then
   OPTIONS="-splore"
+  LIBRARY="/usr/share/pico-8/lib1"
 else
   OPTIONS="-run"
   CART="${1}"
+  LIBRARY="/usr/share/pico-8/lib2"
 fi
 shopt -u nocasematch
 
@@ -38,22 +75,16 @@ then
   OPTIONS="${OPTIONS} -draw_rect 0,0,640,480"
 fi
 
-if [ -d "${GAME_DIR}/${HW_ARCH}" ]
-then
-  LAUNCH_DIR="${GAME_DIR}/${HW_ARCH}"
-else
-  LAUNCH_DIR="${GAME_DIR}"
-fi
-
-# store sdl_controllers in root directory so its shared across devices - will look to revisit this with controller refactor work
-cp -f /usr/config/SDL-GameControllerDB/gamecontrollerdb.txt ${GAME_DIR}/sdl_controllers.txt
+LAUNCH="/storage/roms/bios/pico-8/pico8_64"
 
 # mark the binary executable to cover cases where the user adding the binaries doesn't know or forgets.
-chmod 0755 ${LAUNCH_DIR}/${STATIC_BIN}
-set_kill set "-9 ${STATIC_BIN} start_pico8.sh"
-${LAUNCH_DIR}/${STATIC_BIN} -home -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
+chmod 0755 ${LAUNCH}
+export LD_LIBRARY_PATH="${LIBRARY}:${LD_LIBRARY_PATH}"
+cd ${HOME}
+${LAUNCH} -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
 
-for file in /storage/roms/pico-8/bbs/carts/*.p8.png; do
+# copy downloader games to roms folder
+for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
     base_name="$(basename "$file" .p8.png)"
     roms="/storage/roms/pico-8/$base_name"
     images="/storage/roms/pico-8/images/$base_name"
