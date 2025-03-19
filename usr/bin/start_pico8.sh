@@ -44,9 +44,27 @@ done
 sync
 '
 
+  PICO_IUX='title=Pico8 splore
+description=pico-8 splore
+icon=icons/pico_f.png
+exec=/storage/pico/pico.sh
+workdir=/storage/pico/
+selectorbrowser=false
+selectorFilter=.p8,.png,.P8,.PNG
+selectorscreens=images
+selectordir=/storage/roms/pico-8
+selectorbrowser=false
+perfMode=true
+thiscore=no
+strcore=no
+'
+
   # Create the pico.sh file and make it executable
   echo "$PICO_SH_CONTENT" > /storage/pico/pico.sh
   chmod +x /storage/pico/pico.sh
+  
+  echo "$PICO_IUX" > /storage/iux/sections/emulators/09pico8
+  chmod +x /storage/iux/sections/emulators/09pico8
 fi
 
 export HOME="/storage/pico"
