@@ -1,0 +1,45 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:          BatteryShutdown
+# Required-Start:    $all
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      
+# Short-Description: Apagado seguro al 1% de batería
+### END INIT INFO
+
+monitor_battery() {
+    while true; do
+        capacity=$(cat /sys/class/power_supply/battery/capacity 2>/dev/null)
+        status=$(cat /sys/class/power_supply/battery/status 2>/dev/null)
+
+        if [ "$capacity" -le 1 ] && [ "$status" == "Discharging" ]; then
+            logger "Battery at 1% - Initiating safe shutdown protocol"
+            
+            # Disable swap
+            swapoff -a
+            
+            # Unmount non-essential partitions
+            umount -a -t ext4,vfat -l >/dev/null 2>&1
+            
+            # shutdown the system
+            shutdown -h now
+            exit 0
+        fi
+        sleep 60
+    done
+}
+
+case "$1" in
+    start)
+        monitor_battery &
+        ;;
+    stop)
+        pkill -f "99batteryshutdown"
+        ;;
+    *)
+        echo "Uso: $0 {start|stop}"
+        exit 1
+        ;;
+esac

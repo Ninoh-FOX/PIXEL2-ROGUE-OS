@@ -1,0 +1,15 @@
+[Unit]
+Description=Battery Level Monitor for Safe Shutdown
+DefaultDependencies=no
+Before=shutdown.target
+
+[Service]
+Type=simple
+ExecStart=/etc/init.d/99batteryshutdown start
+ExecStop=/etc/init.d/99batteryshutdown stop
+Restart=always
+RestartSec=60s
+RemainAfterExit=yes
+
+[Install]
+WantedBy=basic.target
