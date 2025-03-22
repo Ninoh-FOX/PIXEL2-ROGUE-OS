@@ -1039,6 +1039,31 @@ function set_gambatte() {
     fi
 }
 
+function set_sgb() {
+    log "Set up Sgb..."
+    if [ "${CORE}" = "sgb" ]
+    then
+        SGBCONF="${RETROARCH_PATH}/config/sgb/sgb.opt"
+        if [ ! -f "$SGBCONF" ]
+        then
+            touch "$SGBCONF"
+            echo 'mgba_gb_model = "Super Game Boy"' >> "$SGBCONF"
+            echo 'mgba_sgb_borders = "ON"' >> "$SGBCONF"
+        fi
+        local BORDER="$(game_setting border)"
+        case ${BORDER} in
+             1|true)
+                 sed -i 's#mgba_gb_model.*$#mgba_gb_model = "Super Game Boy"#' "${SGBCONF}" 2>/dev/null
+                 sed -i 's#mgba_sgb_borders.*$#mgba_sgb_borders = "ON"#' "${SGBCONF}" 2>/dev/null
+             ;;
+             *)
+                 sed -i 's#mgba_gb_model.*$#mgba_gb_model = "Super Game Boy"#' "${SGBCONF}" 2>/dev/null
+                 sed -i 's#mgba_sgb_borders.*$#mgba_sgb_borders = "OFF"#' "${SGBCONF}" 2>/dev/null
+             ;;
+        esac
+    fi
+}
+
 function setup_controllers() {
     for i in $(seq 1 1 5)
     do
@@ -1108,6 +1133,7 @@ set_tatemode &
 set_n64opts &
 set_saturnopts &
 set_snesopts &
+set_sgb &
 set_dreamcastopts &
 
 ### Sed operations are expensive, so they are staged and executed as
