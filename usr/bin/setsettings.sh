@@ -1005,24 +1005,19 @@ function set_gambatte() {
         local TWB2_COLORIZATION=$(game_setting renderer.twb2_colorization)
         local TWB3_COLORIZATION=$(game_setting renderer.twb3_colorization)
         local PIXELSHIFT1_COLORIZATION=$(game_setting renderer.pixelshift1_colorization)
+        local COLORFIX="$(game_setting colorfix)"
 
 	if [ -n "${COLORIZATION}" ]
         then
             case ${COLORIZATION} in
                 0|false|none)
                     echo 'gambatte_gb_colorization = "disabled"' >> ${GAMBATTECONF}
-                    sed -i "/gambatte_gbc_color_correction =/d" ${GAMBATTECONF}
-                    echo 'gambatte_gbc_color_correction = "GBC only"' >> ${GAMBATTECONF}
                 ;;
                 "Best Guess")
                     echo 'gambatte_gb_colorization = "auto"' >> ${GAMBATTECONF}
-                    sed -i "/gambatte_gbc_color_correction =/d" ${GAMBATTECONF}
-                    echo 'gambatte_gbc_color_correction = "disabled"' >> ${GAMBATTECONF}
                 ;;
                 GBC|SGB)
                     echo 'gambatte_gb_colorization = "'${COLORIZATION}'"' >> ${GAMBATTECONF}
-                    sed -i "/gambatte_gbc_color_correction =/d" ${GAMBATTECONF}
-                    echo 'gambatte_gbc_color_correction = "disabled"' >> ${GAMBATTECONF}
                 ;;
                 *)
                     echo 'gambatte_gb_colorization = "internal"' >> ${GAMBATTECONF}
@@ -1031,11 +1026,21 @@ function set_gambatte() {
                     echo 'gambatte_gb_palette_twb64_2 = "'${TWB2_COLORIZATION}'"' >> ${GAMBATTECONF}
                     echo 'gambatte_gb_palette_twb64_3 = "'${TWB3_COLORIZATION}'"' >> ${GAMBATTECONF}
 		    echo 'gambatte_gb_palette_pixelshift_1 = "'${PIXELSHIFT1_COLORIZATION}'"' >> ${GAMBATTECONF}
-                    sed -i "/gambatte_gbc_color_correction =/d" ${GAMBATTECONF}
-                    echo 'gambatte_gbc_color_correction = "disabled"' >> ${GAMBATTECONF}
                 ;;
             esac
-        fi 
+        fi
+
+        case ${COLORFIX} in
+             1)
+                 sed -i 's#gambatte_gbc_color_correction.*$#gambatte_gbc_color_correction = "GBC only"#' "${GAMBATTECONF}" 2>/dev/null
+             ;;
+             2)
+                 sed -i 's#gambatte_gbc_color_correction.*$#gambatte_gbc_color_correction = "always"#' "${GAMBATTECONF}" 2>/dev/null
+             ;;
+             *)
+                 sed -i 's#gambatte_gbc_color_correction.*$#gambatte_gbc_color_correction = "disabled"#' "${GAMBATTECONF}" 2>/dev/null
+             ;;
+        esac
     fi
 }
 
@@ -1059,6 +1064,56 @@ function set_sgb() {
              *)
                  sed -i 's#mgba_gb_model.*$#mgba_gb_model = "Super Game Boy"#' "${SGBCONF}" 2>/dev/null
                  sed -i 's#mgba_sgb_borders.*$#mgba_sgb_borders = "OFF"#' "${SGBCONF}" 2>/dev/null
+             ;;
+        esac
+    fi
+}
+
+function set_mgba() {
+    log "Set up mGBA..."
+    if [ "${CORE}" = "mgba" ]
+    then
+        MGBACONF="${RETROARCH_PATH}/config/mGBA/mGBA.opt"
+        if [ ! -f "$MGBACONF" ]
+        then
+            touch "$MGBACONF"
+            echo 'mgba_color_correction = "OFF"' >> "$MGBACONF"
+        fi
+        local COLORFIX="$(game_setting colorfix)"
+        case ${COLORFIX} in
+             1)
+                 sed -i 's#mgba_color_correction.*$#mgba_color_correction = "GBA"#' "${MGBACONF}" 2>/dev/null
+             ;;
+             2)
+                 sed -i 's#mgba_color_correction.*$#mgba_color_correction = "GBC"#' "${MGBACONF}" 2>/dev/null
+             ;;
+             3)
+                 sed -i 's#mgba_color_correction.*$#mgba_color_correction = "Auto"#' "${MGBACONF}" 2>/dev/null
+             ;;
+             *)
+                 sed -i 's#mgba_color_correction.*$#mgba_color_correction = "OFF"#' "${MGBACONF}" 2>/dev/null
+             ;;
+        esac
+    fi
+}
+
+function set_gpsp() {
+    log "Set up gpSP..."
+    if [ "${CORE}" = "gpsp" ]
+    then
+        GPSPCONF="${RETROARCH_PATH}/config/gpSP/gpSP.opt"
+        if [ ! -f "$GPSPCONF" ]
+        then
+            touch "$GPSPCONF"
+            echo 'gpsp_color_correction = "disabled"' >> "$GPSPCONF"
+        fi
+        local COLORFIX="$(game_setting colorfix)"
+        case ${COLORFIX} in
+             1)
+                 sed -i 's#gpsp_color_correction.*$#gpsp_color_correction = "enabled"#' "${GPSPCONF}" 2>/dev/null
+             ;;
+             *)
+                 sed -i 's#gpsp_color_correction.*$#gpsp_color_correction = "disabled"#' "${GPSPCONF}" 2>/dev/null
              ;;
         esac
     fi
@@ -1134,6 +1189,8 @@ set_n64opts &
 set_saturnopts &
 set_snesopts &
 set_sgb &
+set_mgba &
+set_gpsp &
 set_dreamcastopts &
 
 ### Sed operations are expensive, so they are staged and executed as
