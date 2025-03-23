@@ -15,6 +15,7 @@ In the releases, you'll find two files: SYSTEM and STORAGE.7z.
 
 The SYSTEM file is used to overwrite the existing file on the EMUELEC fat32 partition, which is the OS file system with the corrections.
 
-The STORAGE.7z file contains the files that should be located in the root of the EXT4 STORAGE partition.
+The STORAGE.7z file contains the files that should be located in the root of the EXT4 STORAGE partition. 
+This file must be placed in the /roms/storageupdate directory to be installed at boot time. This is intended for people who do not have root access to ext4 file systems or user with Windows OS.
 
 All of this works on either a microSD card with the stock OS or with the configured PlumOS OS.

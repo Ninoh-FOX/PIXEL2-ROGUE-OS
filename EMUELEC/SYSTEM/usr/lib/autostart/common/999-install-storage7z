@@ -1,0 +1,9 @@
+#!/bin/sh
+. /etc/profile
+
+if [ -f /storage/roms/storageupdate/storage.7z ]
+then
+7za x /storage/roms/storageupdate/storage.7z -o/storage -aoa
+rm /storage/roms/storageupdate/storage.7z
+sync
+fi
