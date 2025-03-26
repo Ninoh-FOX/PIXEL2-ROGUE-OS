@@ -3,7 +3,23 @@
 
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
+
+7za x -y /storage/roms/storageupdate/storage.7z ".deletes" -o/storage
+
+if [ -f /storage/.deletes ]; then
+    while IFS= read -r file_to_delete; do
+    if [ -f "${file_to_delete}" ]; then
+       rm "${file_to_delete}"
+    elif [ -d "${file_to_delete}" ]; then
+       rm -rf "${file_to_delete}"
+    fi
+    done < /storage/.deletes
+fi
+
 7za x /storage/roms/storageupdate/storage.7z -o/storage -aoa
 rm /storage/roms/storageupdate/storage.7z
+rm /storage/.deletes
 sync
+
+reboot
 fi

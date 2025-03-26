@@ -351,12 +351,17 @@ function configure_hotkeys() {
             cp /tmp/joypads/"${MY_CONTROLLER}.cfg" /tmp
             sed -i "s# = #=#g" /tmp/"${MY_CONTROLLER}.cfg"
             source /tmp/"${MY_CONTROLLER}.cfg"
-            for HKEYSETTING in input_enable_hotkey_btn input_bind_hold            \
-                               input_exit_emulator_btn input_fps_toggle_btn       \
-                               input_menu_toggle_btn input_save_state_btn         \
-                               input_load_state_btn input_toggle_fast_forward_btn \
-                               input_toggle_fast_forward_axis input_rewind_axis   \
-                               input_rewind_btn
+            for HKEYSETTING in input_enable_hotkey_btn input_bind_hold                      \
+                               input_exit_emulator_btn input_fps_toggle_btn                 \
+                               input_menu_toggle_btn input_save_state_btn                   \
+                               input_load_state_btn input_toggle_fast_forward_btn           \
+                               input_toggle_fast_forward_axis input_rewind_axis             \
+                               input_rewind_btn input_state_slot_decrease_axis              \
+                               input_state_slot_decrease_btn input_state_slot_increase_axis \
+                               input_state_slot_increase_btn input_screenshot_axis          \
+                               input_screenshot_btn input_pause_toggle_axis                 \
+                               input_pause_toggle_btn
+
             do
                 clear_setting "${HKEYSETTING}"
             done
@@ -373,24 +378,28 @@ input_exit_emulator_btn = "${input_start_btn}"
 input_fps_toggle_btn = "${input_y_btn}"
 input_save_state_btn = "${input_r_btn}"
 input_load_state_btn = "${input_l_btn}"
+input_toggle_fast_forward_btn = "${input_b_btn}"
+input_rewind_btn = "${input_a_btn}"
+input_screenshot_btn = "${input_x_btn}"
+input_menu_toggle_btn = "${input_l3_btn}"
 EOF
             if [ -n "${input_r2_btn}" ] && \
                [ -n "${input_l2_btn}" ]
             then
                 cat <<EOF >>${RETROARCH_CONFIG}
-input_toggle_fast_forward_axis = "nul"
-input_toggle_fast_forward_btn = "${input_r2_btn}"
-input_rewind_axis = "nul"
-input_rewind_btn = "${input_l2_btn}"
+input_state_slot_decrease_axis = "nul"
+input_state_slot_decrease_btn = "${input_l2_btn}"
+input_state_slot_increase_axis = "nul"
+input_state_slot_increase_btn = "${input_r2_btn}"
 EOF
             elif [ -n "${input_r2_axis}" ] && \
                  [ -n "${input_l2_axis}" ]
             then
                 cat <<EOF >>${RETROARCH_CONFIG}
-input_toggle_fast_forward_axis = "${input_r2_axis}"
-input_toggle_fast_forward_btn = "nul"
-input_rewind_axis = "${input_l2_axis}"
-input_rewind_btn = "nul"
+input_state_slot_decrease_axis = "${input_l2_axis}"
+input_state_slot_decrease_btn = "nul"
+input_state_slot_increase_axis = "${input_r2_axis}"
+input_state_slot_increase_btn = "nul"
 EOF
             fi
             rm -f /tmp/"${MY_CONTROLLER}.cfg"
@@ -1135,6 +1144,12 @@ function setup_controllers() {
             esac
         fi
     done
+    sed -i 's#input_touch_vmouse_gesture.*$#input_touch_vmouse_gesture = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
+    sed -i 's#input_touch_vmouse_mouse.*$#input_touch_vmouse_mouse = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
+    sed -i 's#input_touch_vmouse_pointer.*$#input_touch_vmouse_pointer = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
+    sed -i 's#input_touch_vmouse_touchpad.*$#input_touch_vmouse_touchpad = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
+    sed -i 's#input_touch_vmouse_trackball.*$#input_touch_vmouse_trackball = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
+    sed -i 's#input_sensors_enable.*$#input_sensors_enable = "false"#' "${RETROARCH_CONFIG}" 2>/dev/null
     flush_settings
 }
 
@@ -1156,6 +1171,9 @@ configure_hotkeys
 
 set_atari &
 set_gambatte &
+set_sgb &
+set_mgba &
+set_gpsp &
 
 wait
 flush_settings
@@ -1187,9 +1205,6 @@ set_tatemode &
 set_n64opts &
 set_saturnopts &
 set_snesopts &
-set_sgb &
-set_mgba &
-set_gpsp &
 set_dreamcastopts &
 
 ### Sed operations are expensive, so they are staged and executed as
