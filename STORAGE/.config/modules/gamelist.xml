@@ -1,6 +1,18 @@
 <?xml version="1.0"?>
 <gameList>
 	<game>
+		<path>./fileman.sh</path>
+		<name>File Manager</name>
+		<desc>Enables you to browse the ROCKNIX filesystem and manage files directly on your device. You can also use this tool to copy files from external drives to your ROCKNIX filesystem.</desc>
+		<developer>Tardigrade and ROCKNIX</developer>
+		<publisher>ROCKNIX</publisher>
+		<rating>5.0</rating>
+		<releasedate>2022</releasedate>
+		<genre>Tool</genre>
+		<players>1</players>
+		<image>./images/file-manager.svg</image>
+	</game>
+	<game>
 		<path>./Install ROCKNIX.sh</path>
 		<name>Install ROCKNIX</name>
 		<desc>Use this utility to install ROCKNIX to the local storage on your device. Note: This process will wipe the drive that you choose to install ROCKNIX on.</desc>
@@ -145,18 +157,6 @@
 		<image>./images/retroarch-32.svg</image>
 	</game>
 	<game>
-		<path>./Start 64bit Retroarch.sh</path>
-		<name>Start RetroArch (64-bit)</name>
-		<desc>Opens the RetroArch GUI (64-bit version) to enable global configuration changes to be made directly to the emulator. RetroArch is a frontend for emulators, game engines and media players.</desc>
-		<developer>ROCKNIX</developer>
-		<publisher>ROCKNIX</publisher>
-		<rating>5.0</rating>
-		<releasedate>2021</releasedate>
-		<genre>Emulator</genre>
-		<players>1</players>
-		<image>./images/retroarch-64.svg</image>
-	</game>
-	<game>
 		<path>./Start RPCS3.sh</path>
 		<name>Start RPCS3</name>
 		<desc>Opens the RPCS3 GUI (PS3) to enable configuration changes to be made directly to the emulator. You can use this to set up firmware, update controls and install packages. It's recommended to have a mouse and keyboard available to modify settings. RPCS3 is a multi-platform open-source Sony PlayStation 3 emulator and debugger written in C++ for Windows, Linux, macOS and FreeBSD.</desc>
@@ -229,31 +229,25 @@
 		<image>./images/nfs.svg</image>
 	</game>
 	<game>
-		<path>./fileman.sh</path>
-		<name>File Manager</name>
-		<desc>Enables you to browse the ROCKNIX filesystem and manage files directly on your device. You can also use this tool to copy files from external drives to your ROCKNIX filesystem.</desc>
-		<image>./images/file-manager.svg</image>
+		<path>./Start 64bit Retroarch.sh</path>
+		<name>Start RetroArch (64-bit)</name>
+		<desc>Opens the RetroArch GUI (64-bit version) to enable global configuration changes to be made directly to the emulator. RetroArch is a frontend for emulators, game engines and media players.</desc>
+		<image>./images/retroarch-64.svg</image>
 		<rating>5.0</rating>
-		<releasedate>2022</releasedate>
-		<developer>Tardigrade and ROCKNIX</developer>
+		<releasedate>2021</releasedate>
+		<developer>ROCKNIX</developer>
 		<publisher>ROCKNIX</publisher>
-		<genre>Tool</genre>
+		<genre>Emulator</genre>
 		<players>1</players>
-		<playcount>1</playcount>
-		<lastplayed>20250326T185242</lastplayed>
-		<gametime>54</gametime>
+		<playcount>2</playcount>
+		<lastplayed>20250327T170224</lastplayed>
+		<gametime>3675</gametime>
 	</game>
- 	<game>
+	<game>
 		<path>./commander.sh</path>
-		<name>Dingux Commander</name>
-		<desc>Dingux Commander file system manager and editor.</desc>
-		<image>./images/file-manager.svg</image>
-		<rating>5.0</rating>
-		<releasedate>2022</releasedate>
-		<developer>mthuurne, zearm, gcwnow and Ninoh-FOX</developer>
-		<publisher>Ninoh-FOX</publisher>
-		<genre>Tool</genre>
-		<players>1</players>
+		<name>commander</name>
 		<playcount>1</playcount>
+		<lastplayed>20250327T160221</lastplayed>
+		<gametime>392</gametime>
 	</game>
 </gameList>

@@ -1,7 +1,7 @@
 title=Commander
 description=Dingux Commander
 icon=/storage/iux/apps/DinguxCommander/commander.png
-exec=od-commander
+exec=/bin/od-commander
 selectorbrowser=false
 wrapper=true
 thiscore=no

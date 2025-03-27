@@ -1,0 +1,13 @@
+title=GBC
+description=Nintendo Game Boy Color
+icon=icons/gbc.png
+exec=/usr/bin/runemu.sh
+params=[selFullPath] -Pgbc --core=[selCore] --emulator=retroarch --controllers="-p1index 0 -p1guid 19009b4d4b4800000111000000010000 -p1name "retrogame_joypad" -p1nbbuttons 18 -p1nbhats 0 -p1nbaxes 4 "
+consoleapp=true
+manual=/storage/miniplus/Manual/02handheld/11gb.txt
+selectorbrowser=true
+selectorFilter=.gb,GB,GBC,.gbc,dmg,zip,ZIP
+selectorscreens=images
+selectordir=/storage/roms/gbc
+thiscore=gambatte
+strcore=gambatte,mgba,vbm,gpsp

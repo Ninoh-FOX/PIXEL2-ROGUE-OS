@@ -1,0 +1,10 @@
+title=Music player
+description=run mumusic application
+icon=icons/music.png
+exec=/usr/bin/start_gmu.sh
+selectorbrowser=true
+wrapper=true
+dontleave=false
+perfMode=true
+thiscore=no
+strcore=no
