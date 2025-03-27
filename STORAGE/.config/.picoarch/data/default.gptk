@@ -1,0 +1,30 @@
+back = esc
+start = enter
+a = none
+b = none
+x = none
+y = none
+up = none
+down = none
+left = none
+right = none
+left_trigger = none
+right_trigger = none
+
+left_analog_as_mouse = false
+right_analog_as_mouse = false
+left_analog_up = up
+left_analog_down = down
+left_analog_left = left
+left_analog_right = right
+
+right_analog_up = up
+right_analog_down = down
+right_analog_left = left
+right_analog_right = right
+
+deadzone_y = 22000
+deadzone_x = 22000
+deadzone_triggers = 10
+fake_mouse_scale = 1
+fake_mouse_delay = 100000
