@@ -1,6 +1,12 @@
 #!/bin/sh
 . /etc/profile
 
+if [ ! -d /storage/roms/saves ]
+then
+    mkdir /storage/roms/saves
+    sync
+fi
+
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
 

@@ -354,13 +354,15 @@ function configure_hotkeys() {
             for HKEYSETTING in input_enable_hotkey_btn input_bind_hold                      \
                                input_exit_emulator_btn input_fps_toggle_btn                 \
                                input_menu_toggle_btn input_save_state_btn                   \
+                               input_menu_toggle input_menu_toggle_gamepad_combo            \
                                input_load_state_btn input_toggle_fast_forward_btn           \
                                input_toggle_fast_forward_axis input_rewind_axis             \
                                input_rewind_btn input_state_slot_decrease_axis              \
                                input_state_slot_decrease_btn input_state_slot_increase_axis \
                                input_state_slot_increase_btn input_screenshot_axis          \
                                input_screenshot_btn input_pause_toggle_axis                 \
-                               input_pause_toggle_btn
+                               input_pause_toggle_btn input_player1_l3_btn                  \
+                               input_state_slot_decrease_mbtn input_state_slot_increase_mbtn
 
             do
                 clear_setting "${HKEYSETTING}"
@@ -381,7 +383,8 @@ input_load_state_btn = "${input_l_btn}"
 input_toggle_fast_forward_btn = "${input_b_btn}"
 input_rewind_btn = "${input_a_btn}"
 input_screenshot_btn = "${input_x_btn}"
-input_menu_toggle_btn = "${input_l3_btn}"
+input_menu_toggle_btn = "${input_menu_btn}"
+input_menu_toggle_gamepad_combo = "nul"
 EOF
             if [ -n "${input_r2_btn}" ] && \
                [ -n "${input_l2_btn}" ]
@@ -389,8 +392,10 @@ EOF
                 cat <<EOF >>${RETROARCH_CONFIG}
 input_state_slot_decrease_axis = "nul"
 input_state_slot_decrease_btn = "${input_l2_btn}"
+input_state_slot_decrease_mbtn = "nul"
 input_state_slot_increase_axis = "nul"
 input_state_slot_increase_btn = "${input_r2_btn}"
+input_state_slot_increase_mbtn = "nul"
 EOF
             elif [ -n "${input_r2_axis}" ] && \
                  [ -n "${input_l2_axis}" ]
@@ -398,8 +403,10 @@ EOF
                 cat <<EOF >>${RETROARCH_CONFIG}
 input_state_slot_decrease_axis = "${input_l2_axis}"
 input_state_slot_decrease_btn = "nul"
+input_state_slot_decrease_mbtn = "nul"
 input_state_slot_increase_axis = "${input_r2_axis}"
 input_state_slot_increase_btn = "nul"
+input_state_slot_increase_mbtn = "nul"
 EOF
             fi
             rm -f /tmp/"${MY_CONTROLLER}.cfg"

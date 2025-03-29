@@ -8,7 +8,7 @@ source /etc/profile
 
 set_kill set "od-commander"
 
-HOME=/storage
+HOME=/storage/roms
 clear
 od-commander
 
