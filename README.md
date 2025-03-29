@@ -1,3 +1,5 @@
+<p align="center"><img class="center" src =https://raw.githubusercontent.com/Ninoh-FOX/PIXEL2_system_mods/refs/heads/main/splash.png></p>
+
 # GKD PIXEL2 system mods
 mods in stock SYSTEM file
 
