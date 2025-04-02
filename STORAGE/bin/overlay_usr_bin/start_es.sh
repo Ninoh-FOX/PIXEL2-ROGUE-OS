@@ -5,5 +5,5 @@
 ### setup is the same
 . $(dirname $0)/es_settings
 
-mpv --image-display-duration=5 -fs /storage/.config/emulationstation/resources/splash.png &
+show /storage/.config/emulationstation/resources/splash.png &
 emulationstation --log-path /var/log --no-splash

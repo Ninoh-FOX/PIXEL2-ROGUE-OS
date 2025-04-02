@@ -78,12 +78,12 @@ int main(int argc, char* argv[]) {
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
 
-    // Esperar evento de salida
-    SDL_Event e;
-    while (SDL_WaitEvent(&e) && e.type != SDL_QUIT) {}
+    // Esperar tiempo de salida
+	SDL_Delay(5000);
 
     // Liberar recursos
     SDL_DestroyTexture(texture);
+	SDL_FreeSurface(rgb_surface);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

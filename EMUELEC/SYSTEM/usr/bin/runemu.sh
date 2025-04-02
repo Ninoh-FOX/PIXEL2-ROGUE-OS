@@ -313,7 +313,9 @@ fi
 
 ### Execution time.
 clear_screen
+sleep 1
 pkill -9 show
+sleep 1
 ${VERBOSE} && log $0 "executing game: ${ROMNAME}"
 ${VERBOSE} && log $0 "script to execute: ${RUNTHIS}"
 

@@ -150,10 +150,10 @@ case ${EMULATOR} in
     RUNTHIS='${RUN_SHELL} /usr/bin/start_mednafen.sh "${ROMNAME}" "${CORE}" "${PLATFORM}"'
   ;;
   picoarch_LD)
-    /storage/.config/.picoarch/bin/picoarch_plumOS.sh "${ROMNAME}" "${CORE}" ${EMULATOR}
+    RUNTHIS='${RUN_SHELL} /storage/.config/.picoarch/bin/picoarch_plumOS.sh "${ROMNAME}" "${CORE}" "${EMULATOR}"'
   ;;
   picoarch_HD)
-    /storage/.config/.picoarch/bin/picoarch_plumOS.sh "${ROMNAME}" "${CORE}" ${EMULATOR}
+    RUNTHIS='${RUN_SHELL} /storage/.config/.picoarch/bin/picoarch_plumOS.sh "${ROMNAME}" "${CORE}" "${EMULATOR}"'
   ;;
   retroarch)
     # Make sure NETWORK_PLAY isn't defined before we start our tests/configuration.
@@ -293,7 +293,7 @@ case ${EMULATOR} in
         then
         rm -f "${SET_SETTINGS_TMP}"
         fi
-	sed -i 's#aspect_ratio_index.*$#aspect_ratio_index = "22"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+	    sed -i 's#aspect_ratio_index.*$#aspect_ratio_index = "22"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
         sed -i 's#input_menu_toggle_gamepad_combo.*$#input_menu_toggle_gamepad_combo = "7"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
         sed -i 's#input_overlay_enable.*$#input_overlay_enable = "false"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
         sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
@@ -319,7 +319,9 @@ fi
 
 ### Execution time.
 clear_screen
+sleep 1
 pkill -9 show
+sleep 1
 ${VERBOSE} && log $0 "executing game: ${ROMNAME}"
 ${VERBOSE} && log $0 "script to execute: ${RUNTHIS}"
 
