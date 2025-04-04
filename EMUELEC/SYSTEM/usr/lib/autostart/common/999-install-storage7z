@@ -7,6 +7,18 @@ then
     sync
 fi
 
+if [ ! -d /storage/roms/savestates ]
+then
+    mkdir /storage/roms/savestates
+    sync
+fi
+
+if [ ! -d /storage/roms/storageupdate ]
+then
+    mkdir /storage/roms/storageupdate
+    sync
+fi
+
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
 
