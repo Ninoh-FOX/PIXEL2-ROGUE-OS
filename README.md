@@ -22,6 +22,12 @@ This file must be placed in the /roms/storageupdate directory to be installed at
 
 All of this works on either a microSD card with the stock OS or with the configured PlumOS OS.
 
+###
+
+You need the oficial pico8 files for Raspberry Pi
+
+Put pico8_64 and pico8.dat files in /roms/bios/pico-8 folder.
+
 ### Features and Fixes:
 
 Added full pico8 with mouse support, downloading, and card viewing in ES.
