@@ -43,7 +43,8 @@ ln -sf /storage/roms/nds /storage/.config/drastic/backup
 cd /storage/.config/drastic/
 
 stickmod &
-STICKMOD_PID=$!
+sleep 1
 
 ./drastic "$1"
-kill -9 $STICKMOD_PID
+
+pkill -9 stickmod

@@ -64,9 +64,11 @@ case $1 in
 
   *)
     GAME=$(cat "${GAME}")
-    export LD_LIBRARY_PATH="${LIBRARY}:${LD_LIBRARY_PATH}"
     systemctl start fluidsynth
+	stickmod &
+    sleep 1
     eval /usr/bin/scummvm --fullscreen --joystick=0 --themepath=/usr/config/scummvm/themes "${GAME}"
+	pkill -9 stickmod
     systemctl stop fluidsynth
   ;;
 esac

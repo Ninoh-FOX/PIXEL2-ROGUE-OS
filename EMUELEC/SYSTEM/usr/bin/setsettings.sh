@@ -346,22 +346,30 @@ function configure_hotkeys() {
 
     if [ "$(get_setting system.autohotkeys)" == "1" ]
     then
-        if [ -e "/tmp/joypads/${MY_CONTROLLER}.cfg" ]
+
+        if [[ "${CORE}" == pcsx* || "${PLATFORM}" == "ports" ]]
         then
-            cp /tmp/joypads/"${MY_CONTROLLER}.cfg" /tmp
-            sed -i "s# = #=#g" /tmp/"${MY_CONTROLLER}.cfg"
-            source /tmp/"${MY_CONTROLLER}.cfg"
-            for HKEYSETTING in input_enable_hotkey_btn input_bind_hold                      \
-                               input_exit_emulator_btn input_fps_toggle_btn                 \
-                               input_menu_toggle_btn input_save_state_btn                   \
-                               input_menu_toggle input_menu_toggle_gamepad_combo            \
-                               input_load_state_btn input_toggle_fast_forward_btn           \
-                               input_toggle_fast_forward_axis input_rewind_axis             \
-                               input_rewind_btn input_state_slot_decrease_axis              \
-                               input_state_slot_decrease_btn input_state_slot_increase_axis \
-                               input_state_slot_increase_btn input_screenshot_axis          \
-                               input_screenshot_btn input_pause_toggle_axis                 \
-                               input_pause_toggle_btn input_player1_l3_btn                  \
+        JOYPAD=${MY_CONTROLLER}2.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}.cfg
+        fi
+
+        if [ -e "/tmp/joypads/${JOYPAD}" ]
+        then
+            cp /tmp/joypads/"${JOYPAD}" /tmp
+            sed -i "s# = #=#g" /tmp/"${JOYPAD}"
+            source /tmp/"${JOYPAD}"
+            for HKEYSETTING in input_driver input_device input_enable_hotkey_btn input_bind_hold \
+                               input_exit_emulator_btn input_fps_toggle_btn input_joypad_driver  \
+                               input_menu_toggle_btn input_save_state_btn                        \
+                               input_menu_toggle input_menu_toggle_gamepad_combo                 \
+                               input_load_state_btn input_toggle_fast_forward_btn                \
+                               input_toggle_fast_forward_axis input_rewind_axis                  \
+                               input_rewind_btn input_state_slot_decrease_axis                   \
+                               input_state_slot_decrease_btn input_state_slot_increase_axis      \
+                               input_state_slot_increase_btn input_screenshot_axis               \
+                               input_screenshot_btn input_pause_toggle_axis                      \
+                               input_pause_toggle_btn input_player1_l3_btn                       \
                                input_state_slot_decrease_mbtn input_state_slot_increase_mbtn
 
             do
@@ -375,6 +383,9 @@ function configure_hotkeys() {
                 echo 'input_enable_hotkey_btn = '\"${input_enable_hotkey_btn}\" >>${RETROARCH_CONFIG}
             fi
             cat <<EOF >>${RETROARCH_CONFIG}
+input_driver = "${input_driver}"
+input_device = "${input_device}"
+input_joypad_driver = "${input_driver}"
 input_bind_hold = "${input_select_btn}"
 input_exit_emulator_btn = "${input_start_btn}"
 input_fps_toggle_btn = "${input_y_btn}"
@@ -409,9 +420,70 @@ input_state_slot_increase_btn = "nul"
 input_state_slot_increase_mbtn = "nul"
 EOF
             fi
-            rm -f /tmp/"${MY_CONTROLLER}.cfg"
+            rm -f /tmp/"${JOYPAD}"
         fi
     fi
+
+## reset joypad for udev or sdl2 ###
+
+        if [[ "${CORE}" == pcsx* || "${PLATFORM}" == "ports" ]]
+        then
+        JOYPAD=${MY_CONTROLLER}2.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}.cfg
+        fi
+
+    if [ -e "/tmp/joypads/${JOYPAD}" ]
+    then
+        cp /tmp/joypads/"${JOYPAD}" /tmp
+        sed -i "s# = #=#g" /tmp/"${JOYPAD}"
+        source /tmp/"${JOYPAD}"
+        for JKEYSETTING in input_player1_up_btn input_player1_down_btn input_player1_right_btn input_player1_left_btn \
+                    input_player1_a_btn input_player1_b_btn input_player1_x_btn input_player1_y_btn            \
+                    input_player1_l_btn input_player1_r_btn input_player1_l3_btn input_player1_select_btn      \
+                    input_player1_start_btn input_player1_l2_axis input_player1_l2_btn input_player1_r2_axis   \
+                    input_player1_r2_btn
+        do
+            clear_setting "${JKEYSETTING}"
+            done
+            flush_settings
+            cat <<EOF >>${RETROARCH_CONFIG}
+input_player1_up_btn = "${input_up_btn}"
+input_player1_down_btn = "${input_down_btn}"
+input_player1_right_btn = "${input_right_btn}"
+input_player1_left_btn = "${input_left_btn}"
+input_player1_a_btn = "${input_a_btn}"
+input_player1_b_btn = "${input_b_btn}"
+input_player1_x_btn = "${input_x_btn}"
+input_player1_y_btn = "${input_y_btn}"
+input_player1_l_btn = "${input_l_btn}"
+input_player1_r_btn = "${input_r_btn}"
+input_player1_l3_btn = "${input_l3_btn}"
+input_player1_select_btn = "${input_select_btn}"
+input_player1_start_btn = "${input_start_btn}"
+EOF
+            if [ -n "${input_r2_btn}" ] && \
+               [ -n "${input_l2_btn}" ]
+            then
+                cat <<EOF >>${RETROARCH_CONFIG}
+input_player1_l2_axis = "nul"
+input_player1_l2_btn = "${input_l2_btn}"
+input_player1_r2_axis = "nul"
+input_player1_r2_btn = "${input_r2_btn}"
+EOF
+            elif [ -n "${input_r2_axis}" ] && \
+                 [ -n "${input_l2_axis}" ]
+            then
+                cat <<EOF >>${RETROARCH_CONFIG}
+input_player1_l2_axis = "${input_l2_axis}"
+input_player1_l2_btn = "nul"
+input_player1_r2_axis = "${input_r2_axis}"
+input_player1_r2_btn = "nul"
+EOF
+            fi
+
+            rm -f /tmp/"${JOYPAD}"
+        fi
 }
 
 function set_ra_menudriver() {
