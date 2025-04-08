@@ -4,12 +4,15 @@
 #include <unistd.h>
 #include <linux/input.h>
 #include <linux/uinput.h>
+#include <linux/joystick.h>
+#include <sys/ioctl.h>
 #include <time.h>
 #include <signal.h>
 #include <string.h>
 #include <dirent.h>
 #include <pwd.h>
 #include <SDL2/SDL.h>
+
 
 #define DEVICE "/dev/input/event2"
 #define MOVE_INTERVAL_MS 20
@@ -160,7 +163,7 @@ int main(int argc, char *argv[]) {
     }
     load_config(config_path);
 
-    int fd = open(DEVICE, O_RDONLY | O_NONBLOCK);
+    int fd = open(DEVICE, O_RDWR | O_NONBLOCK);
     if (fd < 0) {
         return 1;
     }
@@ -192,14 +195,16 @@ int main(int argc, char *argv[]) {
                     mode = !mode;
                     printf("Modo: %s\n", mode ? "Mouse" : "D-Pad");
                 } else if (mode) {
+					ioctl(fd, EVIOCGRAB, 1);
                     if (ev.code == BTN_DPAD_UP) dpad_state.up = ev.value;
                     if (ev.code == BTN_DPAD_DOWN) dpad_state.down = ev.value;
                     if (ev.code == BTN_DPAD_LEFT) dpad_state.left = ev.value;
                     if (ev.code == BTN_DPAD_RIGHT) dpad_state.right = ev.value;
                     if (ev.code == key_mouse_left) send_click(uinput_fd, BTN_LEFT, ev.value);
-                    if (ev.code == key_mouse_right && key_mouse_right != -1) 
-                        send_click(uinput_fd, BTN_RIGHT, ev.value);
-                }
+                    if (ev.code == key_mouse_right && key_mouse_right != -1) send_click(uinput_fd, BTN_RIGHT, ev.value);
+                } else {
+					ioctl(fd, EVIOCGRAB, 0);
+				}
             }
         }
 
