@@ -298,9 +298,8 @@ case ${EMULATOR} in
         sed -i 's#input_overlay_enable.*$#input_overlay_enable = "false"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
         sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
         sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        sed -i 's#input_player1_l3_btn.*$#input_player1_l3_btn = "5"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+        /usr/bin/setsettings.sh ports 0 0
         RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
-		
 	    sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
       ;;
       "shell")
