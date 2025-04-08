@@ -224,6 +224,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
+	ioctl(fd, EVIOCGRAB, 0);
     close(uinput_fd);
     close(fd);
     return 0;

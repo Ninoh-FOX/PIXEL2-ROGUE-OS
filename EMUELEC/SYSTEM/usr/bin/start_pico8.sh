@@ -21,12 +21,22 @@ export HOME=/storage/pico
 if [ "$1" == "/storage/roms/pico-8/Splore.png" ]; then
 
     export LD_LIBRARY_PATH="$HOME/lib1:${LD_LIBRARY_PATH}"
+    stickmod -c /storage/pico/dpadmouse.cfg &
+    sleep 1
+
     /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -splore -root_path /storage/roms/pico-8 -joystick 0
+
+    pkill -9 stickmod
 
 else
 
     export LD_LIBRARY_PATH="$HOME/lib2:${LD_LIBRARY_PATH}"
+    stickmod -c /storage/pico/dpadmouse.cfg &
+    sleep 1
+
     /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -run "$1" -root_path /storage/roms/pico-8 -joystick 0
+
+    pkill -9 stickmod
 
 fi
 
@@ -99,7 +109,13 @@ LAUNCH="/storage/roms/bios/pico-8/pico8_64"
 chmod 0755 ${LAUNCH}
 export LD_LIBRARY_PATH="${LIBRARY}:${LD_LIBRARY_PATH}"
 cd ${HOME}
+
+stickmod -c /storage/pico/dpadmouse.cfg &
+sleep 1
+
 ${LAUNCH} -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
+
+pkill -9 stickmod
 
 # copy downloader games to roms folder
 for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
