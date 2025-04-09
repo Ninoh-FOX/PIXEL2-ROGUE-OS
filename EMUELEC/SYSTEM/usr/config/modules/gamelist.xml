@@ -260,4 +260,14 @@
         <genre>Tool</genre>
         <releasedate>2025</releasedate>
      </game>
+	     <game>
+        <path>./clockset.sh</path>
+        <name>Set Clock Time</name>
+        <developer>Ninoh-FOX</developer>
+        <publisher>Ninoh-FOX</publisher>
+        <image>./images/clock.png</image>
+        <rating>0</rating>
+        <genre>Tool</genre>
+        <releasedate>2025</releasedate>
+     </game>
 </gameList>
