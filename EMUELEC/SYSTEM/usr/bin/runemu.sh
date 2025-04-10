@@ -183,7 +183,6 @@ case ${EMULATOR} in
     case ${HW_ARCH} in
       aarch64)
         if [[ "${CORE}" =~ pcsx_rearmed32 ]] || \
-           [[ "${CORE}" =~ gpsp ]] || \
            [[ "${CORE}" =~ desmume ]] || \
            [[ "${CORE}" == *"_32b"*  ]]
         then

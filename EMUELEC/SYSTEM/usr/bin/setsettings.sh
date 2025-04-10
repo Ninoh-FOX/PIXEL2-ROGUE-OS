@@ -145,8 +145,17 @@ declare -a NO_ANALOG=(  dreamcast
                         wonderswancolor
 )
 
-declare -a IS_32BIT=(   gpsp
-                        pcsx_rearmed
+declare -a IS_32BIT=(   easyrpg_32b
+                        fbalpha2012_32b
+                        fbneo_32b
+                        fceumm_mod_32b
+                        gpsp_mod_32b
+                        mame2003_plus_32b
+                        mame_32b
+                        nebularm_32b
+                        nebularm_legacy_32b
+                        pcsx_rearmed32
+                        pcsx_rearmed_rumble_32b
 )
 
 declare -a CORE_RATIOS=(    4/3
@@ -347,7 +356,7 @@ function configure_hotkeys() {
     if [ "$(get_setting system.autohotkeys)" == "1" ]
     then
 
-        if [[ "${CORE}" == pcsx* || "${PLATFORM}" == "ports" ]]
+        if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
         JOYPAD=${MY_CONTROLLER}2.cfg
         else
@@ -426,7 +435,7 @@ EOF
 
 ## reset joypad for udev or sdl2 ###
 
-        if [[ "${CORE}" == pcsx* || "${PLATFORM}" == "ports" ]]
+        if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
         JOYPAD=${MY_CONTROLLER}2.cfg
         else
@@ -1158,7 +1167,7 @@ function set_sgb() {
 
 function set_mgba() {
     log "Set up mGBA..."
-    if [ "${CORE}" = "mgba" ]
+    if [[ "${CORE}" == "mgba"* ]]
     then
         MGBACONF="${RETROARCH_PATH}/config/mGBA/mGBA.opt"
         if [ ! -f "$MGBACONF" ]
@@ -1186,7 +1195,7 @@ function set_mgba() {
 
 function set_gpsp() {
     log "Set up gpSP..."
-    if [ "${CORE}" = "gpsp" ]
+    if [[ "${CORE}" == "gpsp"* ]]
     then
         GPSPCONF="${RETROARCH_PATH}/config/gpSP/gpSP.opt"
         if [ ! -f "$GPSPCONF" ]
