@@ -358,9 +358,9 @@ function configure_hotkeys() {
 
         if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
-        JOYPAD=${MY_CONTROLLER}2.cfg
-        else
         JOYPAD=${MY_CONTROLLER}.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}2.cfg
         fi
 
         if [ -e "/tmp/joypads/${JOYPAD}" ]
@@ -368,17 +368,19 @@ function configure_hotkeys() {
             cp /tmp/joypads/"${JOYPAD}" /tmp
             sed -i "s# = #=#g" /tmp/"${JOYPAD}"
             source /tmp/"${JOYPAD}"
-            for HKEYSETTING in input_driver input_device input_enable_hotkey_btn input_bind_hold \
-                               input_exit_emulator_btn input_fps_toggle_btn input_joypad_driver  \
-                               input_menu_toggle_btn input_save_state_btn                        \
-                               input_menu_toggle input_menu_toggle_gamepad_combo                 \
-                               input_load_state_btn input_toggle_fast_forward_btn                \
-                               input_toggle_fast_forward_axis input_rewind_axis                  \
-                               input_rewind_btn input_state_slot_decrease_axis                   \
-                               input_state_slot_decrease_btn input_state_slot_increase_axis      \
-                               input_state_slot_increase_btn input_screenshot_axis               \
-                               input_screenshot_btn input_pause_toggle_axis                      \
-                               input_pause_toggle_btn input_player1_l3_btn                       \
+            for HKEYSETTING in input_driver input_device input_enable_hotkey_btn input_bind_hold          \
+                               input_exit_emulator_btn input_fps_toggle_btn input_joypad_driver           \
+                               input_menu_toggle_btn input_menu_btn input_save_state_btn                  \
+                               input_menu_toggle input_menu_toggle_gamepad_combo                          \
+                               input_menu_toggle_axis input_menu_toggle_mbtn input_desktop_menu_toggle    \
+                               input_desktop_menu_toggle_axis input_desktop_menu_toggle_btn               \
+                               input_load_state_btn input_toggle_fast_forward_btn                         \
+                               input_toggle_fast_forward_axis input_rewind_axis                           \
+                               input_rewind_btn input_state_slot_decrease_axis                            \
+                               input_state_slot_decrease_btn input_state_slot_increase_axis               \
+                               input_state_slot_increase_btn input_screenshot_axis                        \
+                               input_screenshot_btn input_pause_toggle_axis                               \
+                               input_pause_toggle_btn input_player1_l3_btn input_desktop_menu_toggle_mbtn \
                                input_state_slot_decrease_mbtn input_state_slot_increase_mbtn
 
             do
@@ -404,7 +406,14 @@ input_toggle_fast_forward_btn = "${input_b_btn}"
 input_rewind_btn = "${input_a_btn}"
 input_screenshot_btn = "${input_x_btn}"
 input_menu_toggle_btn = "${input_menu_btn}"
+input_menu_toggle = "nul"
+input_menu_toggle_axis = "nul"
+input_menu_toggle_mbtn = "nul"
 input_menu_toggle_gamepad_combo = "nul"
+input_desktop_menu_toggle = "nul"
+input_desktop_menu_toggle_axis = "nul"
+input_desktop_menu_toggle_btn = "nul"
+input_desktop_menu_toggle_mbtn = "nul"
 EOF
             if [ -n "${input_r2_btn}" ] && \
                [ -n "${input_l2_btn}" ]
@@ -437,9 +446,9 @@ EOF
 
         if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
-        JOYPAD=${MY_CONTROLLER}2.cfg
-        else
         JOYPAD=${MY_CONTROLLER}.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}2.cfg
         fi
 
     if [ -e "/tmp/joypads/${JOYPAD}" ]

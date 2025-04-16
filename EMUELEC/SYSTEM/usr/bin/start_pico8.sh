@@ -116,6 +116,7 @@ sleep 1
 ${LAUNCH} -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
 
 pkill -9 stickmod
+pkill -9 pico8_64
 
 # copy downloader games to roms folder
 for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do

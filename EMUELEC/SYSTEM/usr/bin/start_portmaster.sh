@@ -44,7 +44,9 @@ fi
 
 #Use PortMasters gptokeyb
 rm gptokeyb
+rm gptokeyb2
 cp /storage/roms/ports/PortMaster/gptokeyb gptokeyb
+cp /storage/roms/ports/PortMaster/gptokeyb2 gptokeyb2
 
 #Copy over required files for ports
 cp /storage/.config/PortMaster/control.txt /storage/roms/ports/PortMaster/control.txt

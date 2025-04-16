@@ -6,25 +6,47 @@
 . /etc/profile
 . /etc/os-release
 
-if [[ "${UI_SERVICE}" =~ "weston.service"|"*sway*" ]]; then
-  if [[ $(glxinfo | grep -i "opengl renderer") =~ "Panfrost" ]]; then
-    if [[ "${HW_DEVICE}" =~ "RK3326"|"RK3399"|"RK3588"|"S922X" ]]; then
-      #Remove gl4es libs on devices that support OpenGL and sed any port that references it
-      rm -rf /storage/roms/ports/*/lib*/libEGL*
-      rm -rf /storage/roms/ports/*/lib*/libGL*
+if [[ "${UI_SERVICE}" =~ sway ]]; then
+  if glxinfo | grep -i "opengl renderer" | grep -q "Panfrost"; then
+    if [[ "${HW_DEVICE}" =~ "RK3326" ]]; then
+
+      for libdir in /storage/roms/ports/*/lib*; do
+        portdir="$(dirname "$libdir")"
+        backup_dir="$portdir/bak.libs/$(basename "$libdir")"
+
+        mkdir -p "$backup_dir"
+
+        find "$libdir" -maxdepth 1 -type f \( -name 'libEGL*' -o -name 'libGL*' \) | while read -r libfile; do
+          mv "$libfile" "$backup_dir/"
+        done
+      done
+
       for port in /storage/roms/ports/*.sh; do
-        if  grep -q SDL_VIDEO_GL_DRIVER "$port"; then
-          sed -i '/^export SDL_VIDEO_GL_DRIVER/c\#export SDL_VIDEO_GL_DRIVER' "$port"
-          sed -i '/^export SDL_VIDEO_EGL_DRIVER/c\#export SDL_VIDEO_EGL_DRIVER' "$port"
-          echo Fixing: "$port";
-        fi
-      done;
+        sed -i '/^export SDL_VIDEO_GL_DRIVER/c\#export SDL_VIDEO_GL_DRIVER' "$port"
+        sed -i '/^export SDL_VIDEO_EGL_DRIVER/c\#export SDL_VIDEO_EGL_DRIVER' "$port"
+        sed -i '/get_controls && export/c\get_controls' "$port"
+        echo Fixing: "$port";
+      done
     fi
 
-    #Remove S922X fix if exists
+  else
+    for backup in /storage/roms/ports/*/bak.libs/*; do
+      portdir="$(dirname "$(dirname "$backup")")"
+      origlibdir="$portdir/$(basename "$backup")"
+
+      mkdir -p "$origlibdir"
+
+      mv "$backup"/* "$origlibdir/" 2>/dev/null
+      rmdir "$backup" 2>/dev/null
+    done
+
+    find /storage/roms/ports/*/bak.libs -type d -empty -delete 2>/dev/null
+
     for port in /storage/roms/ports/*.sh; do
-      sed -i '/get_controls && export/c\get_controls' "$port"
+      sed -i 's/^#export SDL_VIDEO_GL_DRIVER/export SDL_VIDEO_GL_DRIVER/' "$port"
+      sed -i 's/^#export SDL_VIDEO_EGL_DRIVER/export SDL_VIDEO_EGL_DRIVER/' "$port"
+      sed -i 's/^get_controls$/get_controls \&\& export SDL_VIDEO_GL_DRIVER/' "$port"
       echo Fixing: "$port";
-    done;
+    done
   fi
 fi

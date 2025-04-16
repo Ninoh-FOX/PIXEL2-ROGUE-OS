@@ -5,10 +5,17 @@
 ### setup is the same
 . $(dirname $0)/es_settings
 
-clear
-show /usr/local/share/splash/splash.png &
-sleep 1
+systemctl start essway.service
+systemctl stop iuxway.service
+
+IMAGE=/usr/local/share/splash/splash.png
+
+if [ $(gpudriver) == "libmali" ]; then
+   mpv --image-display-duration=5 -fs ${IMAGE} &
+fi
+
+if [ $(gpudriver) == "panfrost" ]; then
+   /usr/bin/show ${IMAGE} &
+fi
 
 emulationstation --log-path /var/log --no-splash
-
-pkill -9  show

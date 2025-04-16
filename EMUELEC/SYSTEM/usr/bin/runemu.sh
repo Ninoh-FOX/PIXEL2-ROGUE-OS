@@ -183,6 +183,7 @@ case ${EMULATOR} in
     case ${HW_ARCH} in
       aarch64)
         if [[ "${CORE}" =~ pcsx_rearmed32 ]] || \
+           [[ "${CORE}" =~ flycast32 ]] || \
            [[ "${CORE}" =~ desmume ]] || \
            [[ "${CORE}" == *"_32b"*  ]]
         then
@@ -282,18 +283,24 @@ case ${EMULATOR} in
         RUNTHIS='${RUN_SHELL} /usr/bin/start_dolphin_wii.sh "${ROMNAME}" "${PLATFORM}"'
       ;;
       "ports")
-        if [ -e "${SET_SETTINGS_TMP}" ]
-        then
-        rm -f "${SET_SETTINGS_TMP}"
+        if grep -q "retroarch" "${ROMNAME}"; then
+           if [ -e "${SET_SETTINGS_TMP}" ]
+           then
+           rm -f "${SET_SETTINGS_TMP}"
+           fi
+	   sed -i 's#aspect_ratio_index.*$#aspect_ratio_index = "22"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+           sed -i 's#input_menu_toggle_gamepad_combo.*$#input_menu_toggle_gamepad_combo = "7"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+           sed -i 's#input_overlay_enable.*$#input_overlay_enable = "false"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+           sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+           sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
+           /usr/bin/setsettings.sh ports 0 0
+           RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
+	   sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
+        else
+           /usr/bin/portmaster_compatibility.sh
+           RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
+	   sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
         fi
-	sed -i 's#aspect_ratio_index.*$#aspect_ratio_index = "22"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        sed -i 's#input_menu_toggle_gamepad_combo.*$#input_menu_toggle_gamepad_combo = "7"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        sed -i 's#input_overlay_enable.*$#input_overlay_enable = "false"#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        sed -i 's#input_overlay.*$#input_overlay = ""#' "${RETROARCH_TEMP_CONFIG}" 2>/dev/null
-        /usr/bin/setsettings.sh ports 0 0
-        RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
-	sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
       ;;
       "shell")
         RUNTHIS='${RUN_SHELL} "${ROMNAME}"'

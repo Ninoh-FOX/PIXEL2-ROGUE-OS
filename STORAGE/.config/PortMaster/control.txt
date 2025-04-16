@@ -70,6 +70,11 @@ case "${QUIRK_DEVICE}" in
     lres="N"
     sticks="0"
   ;;
+  "GameKiddy GKD Pixel2")
+    profile="anbernic"
+    lres="N"
+    sticks="0"
+  ;;
   *)
     profile="rg552"
     lres="N"
