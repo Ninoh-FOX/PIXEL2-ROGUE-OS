@@ -296,6 +296,7 @@ case ${EMULATOR} in
            /usr/bin/setsettings.sh ports 0 0
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
 	   sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
+           pkill -9 gptokeyb
         else
            /usr/bin/portmaster_compatibility.sh
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
