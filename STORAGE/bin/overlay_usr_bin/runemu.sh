@@ -303,10 +303,13 @@ case ${EMULATOR} in
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
            sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
 		   pkill -9 gptokeyb
+		   pkill -9 gptokeyb2
         else
            /usr/bin/portmaster_compatibility.sh
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
            sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
+		   pkill -9 gptokeyb
+		   pkill -9 gptokeyb2
         fi
       ;;
       "shell")
