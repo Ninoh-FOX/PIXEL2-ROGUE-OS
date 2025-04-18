@@ -16,7 +16,7 @@ if [[ "${UI_SERVICE}" =~ sway ]]; then
 
         mkdir -p "$backup_dir"
 
-        find "$libdir" -maxdepth 1 -type f \( -name 'libEGL*.so' -o -name 'libGL*.so' \) | while read -r libfile; do
+        find "$libdir" -maxdepth 1 -type f \( -name 'libEGL*.so*' -o -name 'libGL*.so*' \) | while read -r libfile; do
           mv "$libfile" "$backup_dir/"
         done
       done
