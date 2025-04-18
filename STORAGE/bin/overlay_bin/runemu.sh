@@ -87,6 +87,8 @@ EOF
 function quit() {
         ${VERBOSE} && log $0 "Cleaning up and exiting"
         bluetooth enable
+		pkill -9 gptokeyb
+		pkill -9 gptokeyb2
         set_kill set "emulationstation"
         clear_screen
         DEVICE_CPU_GOVERNOR=$(get_setting system.cpugovernor)
@@ -302,14 +304,10 @@ case ${EMULATOR} in
            /usr/bin/setsettings.sh ports 0 0
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
            sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
-		   pkill -9 gptokeyb
-		   pkill -9 gptokeyb2
         else
            /usr/bin/portmaster_compatibility.sh
            RUNTHIS='${EMUPERF} ${RUN_SHELL} "${ROMNAME}"'
            sed -i "/^ACTIVE_GAME=/c\ACTIVE_GAME=\"${ROMNAME}\"" /storage/.config/PortMaster/mapper.txt
-		   pkill -9 gptokeyb
-		   pkill -9 gptokeyb2
         fi
       ;;
       "shell")
