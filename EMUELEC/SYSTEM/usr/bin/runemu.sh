@@ -141,7 +141,7 @@ esac
 loginit "$1" "$2" "$3" "$4"
 clear_screen
 bluetooth disable
-show /usr/local/share/splash/splash.png &
+show /usr/local/share/splash/loading.png &
 set_kill stop
 
 ### Determine which emulator we're launching and make appropriate adjustments before launching.
@@ -320,9 +320,6 @@ fi
 
 ### Execution time.
 clear_screen
-sleep 1
-pkill -9 show
-sleep 1
 ${VERBOSE} && log $0 "executing game: ${ROMNAME}"
 ${VERBOSE} && log $0 "script to execute: ${RUNTHIS}"
 
