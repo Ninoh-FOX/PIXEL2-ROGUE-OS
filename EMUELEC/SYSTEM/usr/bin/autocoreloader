@@ -24,19 +24,25 @@ EMU=${2}
 function main() {
 case ${EMU} in
     "arcade")
-        CORESLIST="mame2003_plus fbalpha2012 fbneo mame2000 mame2010 mame2015 fbalpha2019 mame_32b mame"
+        CORESLIST="mame2003_plus fbalpha2012 fbalpha2012_32b fbneo mame2000 mame2010 mame2015 fbalpha2019 mame_32b mame"
     ;;
-    cps*)
-        CORESLIST="fbalpha2012_cps1 fbalpha2012_cps2 fbalpha2012_cps3 fbalpha2012 fbneo mame2003_plus mame2010 mba_mini"
+    "cps1")
+        CORESLIST="fbalpha2012_cps1 fbalpha2012 fbalpha2012_32b fbneo fbneo_32b mame2003_plus mame2010 mba_mini"
+    ;;
+    "cps2")
+        CORESLIST="fbalpha2012_cps2 fbalpha2012 fbalpha2012_32b fbneo fbneo_32b mame2003_plus mame2010 mba_mini"
+    ;;
+    "cps3")
+        CORESLIST="fbalpha2012_cps3 fbalpha2012 fbalpha2012_32b fbneo fbneo_32b mame2003_plus mame2010 mba_mini"
     ;;
     "fbn" | "fbneo")
-        CORESLIST="fbneo fbalpha2012 fbalpha2012_32b mame2003_plus mame2010 mame2015 fbalpha2019 mame_32b mame"
+        CORESLIST="fbneo fbneo_32b fbalpha2012 fbalpha2012_32b mame2003_plus mame2010 mame2015 fbalpha2019 mame_32b mame"
     ;;
     "mame")
-        CORESLIST="mame2003_plus mame2000 mame2010 mame2015 mame_32b mame fbalpha2012 fbneo fbalpha2019"
+        CORESLIST="mame2003_plus mame2000 mame2010 mame2015 mame_32b mame fbalpha2012 fbalpha2012_32b fbneo fbneo_32b fbalpha2019"
     ;;
     "neogeo")
-        CORESLIST="fbalpha2012_neogeo fbalpha2012 fbneo mame2003_plus mame2010 mame2015 fbalpha2019 mame_32b mame"
+        CORESLIST="fbalpha2012_neogeo fbalpha2012 fbalpha2012_32b fbneo fbneo_32b mame2003_plus mame2010 mame2015 fbalpha2019 mame_32b mame"
     ;;
     "hbmame")
         CORESLIST="mame2003_plus_32b nebularm_32b fbalpha2012_32b nebularm_legacy_32b fbneo_32b"
