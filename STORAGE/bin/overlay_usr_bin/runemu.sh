@@ -423,6 +423,9 @@ CPU_GOVERNOR=$(get_setting "cpugovernor" "${PLATFORM}" "${ROMNAME##*/}")
 ${VERBOSE} && log $0 "Set emulation performance mode to (${CPU_GOVERNOR})"
 ${CPU_GOVERNOR}
 
+### quit load screen
+pkill -9 show
+
 # If the rom is a shell script just execute it, useful for DOSBOX and ScummVM scan scripts
 if [[ "${ROMNAME}" == *".sh" ]] && [ ! "${PLATFORM}" = "ports" ]; then
         ${VERBOSE} && log $0 "Executing shell script ${ROMNAME}"
