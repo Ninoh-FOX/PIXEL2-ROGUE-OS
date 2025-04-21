@@ -16,6 +16,7 @@ RATMPCONF="/storage/.config/retroarch/retroarch.cfg"
 RAAPPENDCONF="/tmp/.retroarch.cfg"
 OUTPUT_LOG="/var/log/exec.log"
 OUTPUT_LOG1="/var/log/exec1.log"
+SET_SETTINGS_TMP="/tmp/shader"
 EMUPERF=${3}
 ROMFILE=${1}
 FILENAME=${ROMFILE##*/}
@@ -66,7 +67,10 @@ then
 	   grep "Driver not found" ${OUTPUT_LOG1} || \
 	   grep "Aborted" ${OUTPUT_LOG1} || \
 	   grep "Fatal error" ${OUTPUT_LOG1} || \
-	   grep "the game cannot be run" ${OUTPUT_LOG1}
+	   grep "the game cannot be run" ${OUTPUT_LOG1} || \
+           grep "\[ERROR\] \[Content\]:" ${OUTPUT_LOG1} || \
+           grep "\[libretro ERROR\]" ${OUTPUT_LOG1} || \
+           grep "Segmentation fault" ${OUTPUT_LOG1} 
 	then
 		sed -i '/'${FILENAME}'/d' ${CSVFILE}
 		test_core
@@ -93,7 +97,10 @@ function test_core() {
 			   grep "Driver not found" ${OUTPUT_LOG1} || \
 			   grep "Aborted" ${OUTPUT_LOG1} || \
 			   grep "Fatal error" ${OUTPUT_LOG1} || \
-			   grep "the game cannot be run" ${OUTPUT_LOG1}
+			   grep "the game cannot be run" ${OUTPUT_LOG1} || \
+                           grep "\[ERROR\] \[Content\]:" ${OUTPUT_LOG1} || \
+                           grep "\[libretro ERROR\]" ${OUTPUT_LOG1} || \
+                           grep "Segmentation fault" ${OUTPUT_LOG1} 
 			then
 				continue
 			else
@@ -129,6 +136,25 @@ function run_rom() {
 		   export RABIN="retroarch"
 		fi
 	fi
+	
+        ###reset shader
+        if [ -e "${SET_SETTINGS_TMP}" ]
+        then
+          rm -f "${SET_SETTINGS_TMP}"
+        fi
+        /usr/bin/setsettings.sh "${EMU}" "${2}" "${1}" > "${SET_SETTINGS_TMP}"
+
+        if [ -e "${SET_SETTINGS_TMP}" ]
+        then
+           EXTRAOPTS=$(cat ${SET_SETTINGS_TMP})
+           rm -f ${SET_SETTINGS_TMP}
+        fi
+
+        if [[ ${EXTRAOPTS} != 0 ]]; then
+           RUNTHIS=$(echo ${RUNTHIS} | sed "s|--config|${EXTRAOPTS} --config|")
+        fi
+        ###
+	
 	RUNTHIS='${3} /usr/bin/${RABIN} -L ${COREDIR}/${1}_libretro.so --config ${RATMPCONF} --appendconfig ${RAAPPENDCONF} "${2}"'
 	rm -f ${OUTPUT_LOG}
 	log $0 "Executing $(eval echo ${RUNTHIS})"
