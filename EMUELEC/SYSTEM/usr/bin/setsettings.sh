@@ -358,9 +358,9 @@ function configure_hotkeys() {
 
         if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
-        JOYPAD=${MY_CONTROLLER}.cfg
-        else
         JOYPAD=${MY_CONTROLLER}2.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}.cfg
         fi
 
         if [ -e "/tmp/joypads/${JOYPAD}" ]
@@ -446,9 +446,9 @@ EOF
 
         if [[ "${CORE}" == "pcsx"* || "${PLATFORM}" == "ports" ]]
         then
-        JOYPAD=${MY_CONTROLLER}.cfg
-        else
         JOYPAD=${MY_CONTROLLER}2.cfg
+        else
+        JOYPAD=${MY_CONTROLLER}.cfg
         fi
 
     if [ -e "/tmp/joypads/${JOYPAD}" ]
