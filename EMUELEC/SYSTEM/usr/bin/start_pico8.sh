@@ -131,3 +131,7 @@ for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
 done
 
 sync
+
+swaymsg exit
+sleep 1
+systemctl restart emustation
