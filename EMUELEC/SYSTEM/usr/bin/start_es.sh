@@ -5,8 +5,10 @@
 ### setup is the same
 . $(dirname $0)/es_settings
 
-systemctl start essway.service
-systemctl stop iuxway.service
+if ! systemctl is-active --quiet essway.service; then
+    systemctl start essway.service
+    systemctl stop iuxway.service
+fi
 
 IMAGE=/usr/local/share/splash/splash.png
 
