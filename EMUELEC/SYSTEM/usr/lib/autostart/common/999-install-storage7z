@@ -39,5 +39,8 @@ rm /storage/roms/storageupdate/storage.7z
 rm /storage/.deletes
 sync
 
+unzip -o /storage/.config/PortMaster/release/PostMaster.zip -d /storage/roms/ports/PortMaster/
+sync
+
 reboot
 fi
