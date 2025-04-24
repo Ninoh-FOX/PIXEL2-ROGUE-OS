@@ -118,6 +118,9 @@ ${LAUNCH} -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
 pkill -9 stickmod
 pkill -9 pico8_64
 
+shopt -s nocasematch
+if [[ "${1}" == *splore* ]]; then
+
 # copy downloader games to roms folder
 for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
     base_name="$(basename "$file" .p8.png)"
@@ -127,11 +130,22 @@ for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
     if [ ! -e "$roms.p8" ]; then
         cp "$file" "$roms.p8"
         cp "$file" "$images.png"
+        if ! xmlstarlet sel -t -v "//gameList/game[path='./$base_name.p8']" "$GAMELIST" | grep -q .; then
+        xmlstarlet ed --inplace \
+          --subnode "/gameList" --type elem -n game -v "" \
+          --subnode "/gameList/game[last()]" --type elem -n path -v "./$base_name.p8" \
+          --subnode "/gameList/game[last()]" --type elem -n name -v "$base_name" \
+          --subnode "/gameList/game[last()]" --type elem -n image -v "./images/$base_name.png" \
+          "$GAMELIST"
+        fi
     fi
 done
 
-sync
+    sync
 
-swaymsg exit
-sleep 1
-systemctl restart emustation
+    touch /storage/roms/pico-8/gamelist.xml
+    swaymsg exit
+    sleep 1
+    systemctl restart emustation
+fi
+shopt -u nocasematch
