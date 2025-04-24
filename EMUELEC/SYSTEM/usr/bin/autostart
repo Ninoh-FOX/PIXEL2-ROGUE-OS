@@ -1,0 +1,98 @@
+#!/bin/bash
+# SPDX-License-Identifier: GPL-2.0
+# Copyright (C) 2023 JELOS (https://github.com/JustEnoughLinuxOS)
+
+. /etc/profile
+. /etc/os-release
+
+BOOTLOG="/var/log/boot.log"
+
+log() {
+  echo "$(date): Autostart: $*" >>${BOOTLOG} 2>&1
+}
+
+performance 2>/dev/null
+
+### Load platform specific quirks
+if [ -d "/usr/lib/autostart/quirks/platforms/${HW_DEVICE}" ]
+then
+  log "Run ${HW_DEVICE} quirks."
+  tocon "Applying ${HW_DEVICE} quirks..."
+  for script in "/usr/lib/autostart/quirks/platforms/${HW_DEVICE}"/*
+  do
+    log "Run ${script}"
+    if [ -f "${script}" ]
+    then
+      "${script}" 2>&1 >>${BOOTLOG}
+    fi
+  done
+fi
+
+### Load device specific quirks
+if [ -d "/usr/lib/autostart/quirks/devices/${QUIRK_DEVICE}" ]
+then
+  log "Run ${QUIRK_DEVICE} quirks."
+  tocon "Applying ${QUIRK_DEVICE} quirks..."
+  for script in "/usr/lib/autostart/quirks/devices/${QUIRK_DEVICE}"/*
+  do
+    log "Run ${script}"
+    if [ -f "${script}" ]
+    then
+      "${script}" 2>&1 >>${BOOTLOG}
+    fi
+  done
+fi
+
+### Start the automount service
+tocon "Starting storage services..."
+systemctl start rocknix-automount
+
+### Run common start scripts
+for script in /usr/lib/autostart/common/*
+do
+  log "Run ${script}"
+  ${script} 2>&1 >>${BOOTLOG}
+done
+wait
+
+### Run device start scripts
+if [ -d "/usr/lib/autostart/${HW_DEVICE}" ]
+then
+  for script in "/usr/lib/autostart/${HW_DEVICE}"/*
+  do
+    log "Run ${script}"
+    if [ -f "${script}" ]
+    then
+      "${script}" 2>&1 >>${BOOTLOG}
+    fi
+  done
+fi
+
+### Run custom start scripts
+if [ -d "/storage/.config/autostart" ]
+then
+  for script in /storage/.config/autostart/*
+  do
+    log "Run ${script}"
+   ${script} 2>&1 >>${BOOTLOG}
+  done
+fi
+wait
+
+tocon "Starting user interface..."
+log "Startup complete..."
+
+### Re-source the profile so we fetch the correct UI_SERVICE variable.
+. /etc/profile
+
+### Lock is a prerequisite for emustation
+rm /var/lock/start.games 2>&1 >>${BOOTLOG}
+touch /var/lock/start.games 2>&1 >>${BOOTLOG}
+log "Starting ${UI_SERVICE}..."
+systemctl start ${UI_SERVICE} 2>&1 >>${BOOTLOG} &
+
+DEVICE_CPU_GOVERNOR=$(get_setting system.cpugovernor)
+echo ${DEVICE_CPU_GOVERNOR} 2>&1 >>${BOOTLOG}
+log "Autostart complete..."
+
+clear >/dev/console
