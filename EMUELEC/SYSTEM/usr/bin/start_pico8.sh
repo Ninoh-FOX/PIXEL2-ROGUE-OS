@@ -6,6 +6,10 @@
 . /etc/profile
 
 GAME_DIR="/storage/roms/pico-8/"
+PLATFORM=$(echo "${2}"| sed "s#^/.*/##")
+EMULATOR=$(echo "${3}"| sed "s#^/.*/##")
+PIXEL=$(get_setting Perfect_Pixel pico-8 pico-8)
+FULLSCREEN=$(get_setting Set_fullscreen pico-8 pico-8)
 
 if [ ! -d "/storage/pico" ]; then
   mkdir /storage/pico
@@ -91,14 +95,12 @@ else
 fi
 shopt -u nocasematch
 
-INTEGER_SCALE=$(get_setting pico-8.integerscale)
-if [ "${INTEGER_SCALE}" = "1" ]
+if [ "${PIXEL}" = "ON" ]
 then
   OPTIONS="${OPTIONS} -pixel_perfect 1"
 fi
 
-OVER_SCALE=$(get_setting pico-8.integerscaleoverscale)
-if [ "${OVER_SCALE}" = "1" ]
+if [ "${FULLSCREEN}" = "ON" ]
 then
   OPTIONS="${OPTIONS} -draw_rect 0,0,640,480"
 fi
@@ -130,7 +132,7 @@ for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
     if [ ! -e "$roms.p8" ]; then
         cp "$file" "$roms.p8"
         cp "$file" "$images.png"
-        if ! xmlstarlet sel -t -v "//gameList/game[path='./$base_name.p8']" "$GAMELIST" | grep -q .; then
+		if ! xmlstarlet sel -t -v "//gameList/game[path='./$base_name.p8']" "$GAMELIST" | grep -q .; then
         xmlstarlet ed --inplace \
           --subnode "/gameList" --type elem -n game -v "" \
           --subnode "/gameList/game[last()]" --type elem -n path -v "./$base_name.p8" \

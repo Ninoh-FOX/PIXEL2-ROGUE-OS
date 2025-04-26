@@ -157,6 +157,10 @@ case ${EMULATOR} in
   picoarch_HD)
     RUNTHIS='${RUN_SHELL} /storage/.config/.picoarch/bin/picoarch_plumOS.sh "${ROMNAME}" "${CORE}" "${EMULATOR}"'
   ;;
+  fbneosa)
+    set_kill set "-9 fbneo"
+    RUNTHIS='${RUN_SHELL} /usr/bin/start_fbneosa.sh "${ROMNAME}"'
+  ;;
   retroarch)
     # Make sure NETWORK_PLAY isn't defined before we start our tests/configuration.
     del_setting netplay.mode
