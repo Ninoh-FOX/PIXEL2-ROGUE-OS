@@ -92,7 +92,7 @@ log "Starting ${UI_SERVICE}..."
 systemctl start ${UI_SERVICE} 2>&1 >>${BOOTLOG} &
 
 DEVICE_CPU_GOVERNOR=$(get_setting system.cpugovernor)
-ondemand 2>&1 >>${BOOTLOG}
+${DEVICE_CPU_GOVERNOR} 2>&1 >>${BOOTLOG}
 log "Autostart complete..."
 
 clear >/dev/console
