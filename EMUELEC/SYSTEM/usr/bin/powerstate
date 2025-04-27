@@ -39,7 +39,7 @@ do
           cpu_perftune battery
           gpu_performance_level ${GPUPROFILE}
           pcie_aspm_policy powersave
-          wake_events enabled
+          wake_events disabled
           runtime_power_management auto 5
           scsi_link_power_management med_power_with_dipm
         fi
@@ -56,7 +56,7 @@ do
           cpu_perftune performance
           gpu_performance_level auto
           pcie_aspm_policy default
-          wake_events enabled
+          wake_events disabled
           runtime_power_management on 0
           scsi_link_power_management ""
         fi

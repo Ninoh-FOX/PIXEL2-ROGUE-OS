@@ -102,7 +102,7 @@ case $1 in
     inputsense stop
     bluetooth stop
     runtime_power_management on
-    wake_events enabled
+    wake_events disabled
     powerstate stop
     modules stop 
     quirks pre
