@@ -42,5 +42,11 @@ sync
 unzip -o /storage/.config/PortMaster/release/PortMaster.zip -d /storage/roms/ports/
 sync
 
+if [ -f /storage/roms/storageupdate/runtimes.7z ]; then
+7za x /storage/roms/storageupdate/runtimes.7z -o/storage/roms/ports/PortMaster/libs/ -aoa
+rm /storage/roms/storageupdate/runtimes.7z
+sync
+fi
+
 reboot
 fi
