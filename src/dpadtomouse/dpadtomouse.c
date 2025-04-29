@@ -177,7 +177,9 @@ int main(int argc, char *argv[]) {
     setup_uinput_device(uinput_fd);
     send_mouse_event(uinput_fd);
     sdl_nomouse();
-
+    char cmd[128];
+    snprintf(cmd, sizeof(cmd), "swaymsg seat seat0 cursor set %d %d", screen_height/2, screen_width/2); //screen is rotate (480x640)
+    system(cmd);
     struct input_event ev;
     int mode = 0;
     struct timespec last_move, last_click;
