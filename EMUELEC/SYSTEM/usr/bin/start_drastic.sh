@@ -8,6 +8,11 @@
 
 set_kill set "-9 drastic"
 
+#load gptokeyb support files
+control-gen_init.sh
+source /storage/.config/gptokeyb/control.ini
+get_controls
+
 #Copy drastic files to .config
 if [ ! -d "/storage/.config/drastic" ]; then
   mkdir -p /storage/.config/drastic/
@@ -42,9 +47,11 @@ ln -sf /storage/roms/nds /storage/.config/drastic/backup
 
 cd /storage/.config/drastic/
 
+kill_sense &
 stickmod &
 sleep 1
 
 ./drastic "$1"
 
+pkill -9 kill_sense
 pkill -9 stickmod

@@ -5,6 +5,8 @@
 # Source predefined functions and variables
 . /etc/profile
 
+set_kill set "-9 pico8_64"
+
 GAME_DIR="/storage/roms/pico-8/"
 PLATFORM=$(echo "${2}"| sed "s#^/.*/##")
 EMULATOR=$(echo "${3}"| sed "s#^/.*/##")
@@ -18,30 +20,35 @@ if [ ! -d "/storage/pico" ]; then
 
   # Create the content for pico.sh
   PICO_SH_CONTENT='#!/bin/bash
+. /etc/profile
 
 cd $(dirname "$0")
 export HOME=/storage/pico
+set_kill set "-9 pico8_64"
   
 if [ "$1" == "/storage/roms/pico-8/Splore.png" ]; then
 
     export LD_LIBRARY_PATH="$HOME/lib1:${LD_LIBRARY_PATH}"
+	kill_sense &
     stickmod -c /storage/pico/dpadmouse.cfg &
     sleep 1
 
     /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -splore -root_path /storage/roms/pico-8 -joystick 0
 
     pkill -9 stickmod
+	pkill -9 kill_sense
 
 else
 
     export LD_LIBRARY_PATH="$HOME/lib2:${LD_LIBRARY_PATH}"
+	kill_sense &
     stickmod -c /storage/pico/dpadmouse.cfg &
     sleep 1
 
     /storage/roms/bios/pico-8/pico8_64 -draw_rect 0,0,640,480 -run "$1" -root_path /storage/roms/pico-8 -joystick 0
 
     pkill -9 stickmod
-
+	pkill -9 kill_sense
 fi
 
 for file in /storage/pico/.lexaloffle/pico-8/bbs/carts/*.p8.png; do
@@ -112,13 +119,14 @@ chmod 0755 ${LAUNCH}
 export LD_LIBRARY_PATH="${LIBRARY}:${LD_LIBRARY_PATH}"
 cd ${HOME}
 
+kill_sense &
 stickmod -c /storage/pico/dpadmouse.cfg &
 sleep 1
 
 ${LAUNCH} -root_path ${GAME_DIR} -joystick 0 ${OPTIONS} "${CART}"
 
+pkill -9 kill_sense
 pkill -9 stickmod
-pkill -9 pico8_64
 
 shopt -s nocasematch
 if [[ "${1}" == *splore* ]]; then

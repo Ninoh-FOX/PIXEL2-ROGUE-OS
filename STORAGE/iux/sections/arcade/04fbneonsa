@@ -1,0 +1,10 @@
+title=FBNeo SA
+description=FBN SDL2 standalone
+icon=icons/fbn.png
+exec=/usr/bin/start_fbneosa.sh
+selectorbrowser=false
+selectorFilter=.7z,.zip,.7Z,.ZIP
+selectordir=/storage/roms/fbneo
+selectorbrowser=false
+thiscore=no
+strcore=no

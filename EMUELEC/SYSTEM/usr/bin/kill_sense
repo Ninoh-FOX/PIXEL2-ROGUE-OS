@@ -1,0 +1,108 @@
+#!/bin/bash
+
+. /etc/profile
+
+set -e
+
+KILL_FILE="/tmp/.process-kill-data"
+
+START_PRESSED=false
+SELECT_PRESSED=false
+
+KILL_CMD=$(cat "$KILL_FILE")
+
+case $(get_setting system.loglevel) in
+  verbose)
+    DEBUG=true
+  ;;
+  *)
+    DEBUG=false
+  ;;
+esac
+
+DPAD_EVENTS=$(get_setting key.dpad.events)
+if [ -z "${DPAD_EVENTS}" ] || \
+   [ "${DPAD_EVENTS}" = "0" ]
+then
+  DPAD_EVENTS=false
+else
+  DPAD_EVENTS=true
+fi
+
+### Search the system for useful devices to monitor for inputs.
+get_devices() {
+  KJDEVS=false
+  FOUNDKEYS=false
+  FOUNDJOY=false
+  RETRY=5
+  while [ ${KJDEVS} = false ]
+  do
+    # Detect input devices automatically
+    for DEV in /dev/input/ev*
+    do
+      unset SUPPORTS
+      SUPPORTS=$(udevadm info ${DEV} | awk '/ID_INPUT_KEY=|ID_INPUT_JOYSTICK=/ {print $2}')
+      if [ -n "${SUPPORTS}" ]
+      then
+        DEVICE=$(udevadm info ${DEV} | awk 'BEGIN {FS="="} /DEVNAME=/ {print $2}')
+        INPUT_DEVICES+=("${DEVICE}")
+        if [[ "${SUPPORTS}" =~ ID_INPUT_KEY ]]
+        then
+          ${DEBUG} && log $0 "Found Keyboard: ${DEVICE}"
+          FOUNDKEYS=true
+        elif [[ "${SUPPORTS}" =~ ID_INPUT_JOYSTICK ]]
+        then
+          ${DEBUG} && log $0 "Found Joystick: ${DEVICE}"
+          FOUNDJOY=true
+        fi
+      fi
+    done
+    if [ "${FOUNDKEYS}" = "true" ] &&
+       [ "${FOUNDJOY}" = "true" ]
+    then
+      ${DEBUG} && log $0 "Found all of the needed devices."
+      KJDEVS=true
+      break
+    fi
+    if [ "${RETRY}" -ge 5 ]
+    then
+      ${DEBUG} && log $0 "Did not find all of the needed devices, but that may be OK.  Breaking."
+      break
+    else
+      RETRY=$(( ${RETRY} + 1 ))
+    fi
+    sleep 1
+  done
+}
+
+get_devices
+
+# If the input devices change, it may be a new controller
+# so handle it here.
+mkcontroller 2>/dev/null ||:
+
+(
+   for INPUT_DEVICE in ${INPUT_DEVICES[@]}
+   do
+     evtest "${INPUT_DEVICE}" 2>&1 &
+   done
+   wait
+) | while read line; do
+    case ${line} in
+        *BTN_START*,*value\ 1*)
+            START_PRESSED=true ;;
+        *BTN_SELECT*,*value\ 1*)
+            SELECT_PRESSED=true ;;
+        *BTN_START*,*value\ 0*)
+            START_PRESSED=false ;;
+        *BTN_SELECT*,*value\ 0*)
+            SELECT_PRESSED=false ;;
+    esac
+
+    if $START_PRESSED && $SELECT_PRESSED; then
+	    ${DEBUG} && log $0 "Execute: pkill ${KILL_CMD}"
+        pkill $KILL_CMD
+        START_PRESSED=false
+        SELECT_PRESSED=false
+    fi
+done
