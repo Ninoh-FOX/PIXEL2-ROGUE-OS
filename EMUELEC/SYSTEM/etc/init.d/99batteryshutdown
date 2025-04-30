@@ -16,13 +16,18 @@ monitor_battery() {
 
         if [ "$capacity" -le 1 ] && [ "$status" == "Discharging" ]; then
             logger "Battery at 1% - Initiating safe shutdown protocol"
-            rumble-test
+			rumble-test && sleep 0.3
+			rumble-test && sleep 0.3
+			rumble-test
 			
+			pkill -9 retroarch
+			pkill -9 retroarch32
+            
             # Disable swap
             swapoff -a
             
             # Unmount non-essential partitions
-            umount -a -t ext4,vfat -l >/dev/null 2>&1
+            umount -a -t ext4,vfat,loop -l >/dev/null 2>&1
             
             # shutdown the system
             shutdown -h now
