@@ -13,6 +13,30 @@ monitor_battery() {
     while true; do
         capacity=$(cat /sys/class/power_supply/battery/capacity 2>/dev/null)
         status=$(cat /sys/class/power_supply/battery/status 2>/dev/null)
+		
+		if [ "$status" = "Charging" ]; then
+            rm -f /tmp/lowbattery10 /tmp/lowbattery5
+        fi
+		
+        if [ "$capacity" -le 10 ] && [ "$capacity" -qt 5 ] && [ ! -f /tmp/lowbattery10 ] && [ "$status" == "Discharging" ]; then
+            logger "Battery is low to 10%"
+			rumble-test && sleep 0.3
+			rumble-test && sleep 0.3
+			rumble-test
+			
+			touch /tmp/lowbattery10
+			continue
+        fi
+		
+        if [ "$capacity" -le 5 ] && [ "$capacity" -qt 1 ] && [ ! -f /tmp/lowbattery5 ] && [ "$status" == "Discharging" ]; then
+            logger "Battery is low to 5%"
+			rumble-test && sleep 0.3
+			rumble-test && sleep 0.3
+			rumble-test
+			
+			touch /tmp/lowbattery5
+			continue
+        fi
 
         if [ "$capacity" -le 1 ] && [ "$status" == "Discharging" ]; then
             logger "Battery at 1% - Initiating safe shutdown protocol"
