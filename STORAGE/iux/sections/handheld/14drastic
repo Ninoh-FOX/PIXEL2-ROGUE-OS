@@ -1,0 +1,15 @@
+title=DraStic
+description=Nintendo DS Emulator
+icon=/usr/local/share/drastic/icon.png
+exec=/usr/bin/start_drastic2.sh
+workdir=/storage/drastic/
+manual=/storage/miniplus/Manual/02handheld/13nds.txt
+selectordir=/storage/roms/nds/
+selectorbrowser=false
+selectorfilter=.nds,.NDS,.bin,.BIN,.zip,.ZIP
+selectorscreens=images
+wrapper=false
+dontleave=false
+perfMode=true
+thiscore=no
+strcore=no
