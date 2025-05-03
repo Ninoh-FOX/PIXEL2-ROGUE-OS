@@ -131,6 +131,7 @@ press enter and the password is:
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
 - Update RETROARCH to version 1.20.0.
 - Added FBNEO STANDALONE.
+- Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
 - Added Drastic mod version by Steward Fu.
 - Added mouse virtual emulator.
 - Added Portmaster for Pixel 2.
