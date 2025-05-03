@@ -9,6 +9,18 @@ These are minor changes made to the original system such as script improvements 
 
 . sudo mksquashfs squashfs-root SYSTEM -noappend -comp gzip -Xcompression-level 9 -b 262144
 
+### SPECIAL FEACTURES:
+
+- Auto poweroff the machine when this is an 1%.
+- Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
+- Update RETROARCH to version 1.20.0.
+- Added Custom Pico8 splore.
+- Added FBNEO STANDALONE.
+- Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
+- Added Drastic mod version by Steward Fu.
+- Added mouse virtual emulator.
+- Added Portmaster for Pixel 2.
+
 ### Installation:
 
 As this repository is structured, the three main folders refer to the three partitions contained on the console's microSD card.
@@ -124,18 +136,6 @@ Connect the device to the Internet and on a computer on the same local network, 
 press enter and the password is:
 
 `rogue`
-
-### SPECIAL FEACTURES:
-
-- Auto poweroff the machine when this is an 1%.
-- Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
-- Update RETROARCH to version 1.20.0.
-- Added Custom Pico8 splore.
-- Added FBNEO STANDALONE.
-- Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
-- Added Drastic mod version by Steward Fu.
-- Added mouse virtual emulator.
-- Added Portmaster for Pixel 2.
 
 ### Features and Fixes:
 
