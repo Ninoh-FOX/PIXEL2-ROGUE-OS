@@ -4,8 +4,8 @@ SYSROOT = /mnt/ext-data/downloads/buildroot-2025.02/output/host/aarch64-buildroo
 
 # Compilador y flags
 CC = $(CROSS_COMPILE)gcc
-CFLAGS = -Wall -O2 -march=armv8-a+crc -mtune=cortex-a35 -ffast-math -I$(SYSROOT)/usr/include
-LDFLAGS = -L$(SYSROOT)/usr/lib -lSDL2
+CFLAGS = -Wall -O2 -march=armv8-a+crc -mtune=cortex-a35 -ffast-math -I$(SYSROOT)/usr/include -I$(SYSROOT)/usr/include/libevdev-1.0
+LDFLAGS = -L$(SYSROOT)/usr/lib -lSDL2 -levdev
 
 # Archivos fuente y binario
 SRC = dpadtomouse.c
