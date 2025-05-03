@@ -130,6 +130,7 @@ press enter and the password is:
 - Auto poweroff the machine when this is an 1%.
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
 - Update RETROARCH to version 1.20.0.
+- Added Custom Pico8 splore.
 - Added FBNEO STANDALONE.
 - Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
 - Added Drastic mod version by Steward Fu.
@@ -137,6 +138,8 @@ press enter and the password is:
 - Added Portmaster for Pixel 2.
 
 ### Features and Fixes:
+
+(in order of incorporation into the system)
 
 - Added full pico8 with mouse support, downloading, and card viewing in ES.
 - Added mouse support to scummvm.
