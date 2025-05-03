@@ -1,6 +1,6 @@
 <p align="center"><img class="center" src =https://raw.githubusercontent.com/Ninoh-FOX/PIXEL2_system_mods/refs/heads/main/splash.png></p>
 
-# GKD PIXEL2 system mods
+# GKD PIXEL2 ROGUE OS
 mods in stock SYSTEM file
 
 These are minor changes made to the original system such as script improvements by unpacking the original SYSTEM file from the boot partition with the following commands:
