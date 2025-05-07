@@ -1,3 +1,6 @@
+#include <linux/input-event-codes.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -12,6 +15,7 @@
 #include <dirent.h>
 #include <pwd.h>
 #include <SDL2/SDL.h>
+#include <libevdev-1.0/libevdev/libevdev.h>
 
 
 #define DEVICE "/dev/input/event2"
@@ -20,7 +24,7 @@
 #define CLICK_DEBOUNCE_MS 50
 #define DEFAULT_SCREEN_WIDTH 640
 #define DEFAULT_SCREEN_HEIGHT 480
-#define DEFAULT_CONFIG_PATH "/storage/.config/dpadmouse.cfg"
+#define DEFAULT_CONFIG_PATH "/storage/.config/mousekbd.cfg"
 
 struct {
     int up;
@@ -33,21 +37,32 @@ struct {
 
 int key_mode_toggle = BTN_TL2;
 int key_mouse_left = BTN_TR;
-int key_mouse_right = -1;
 int key_mouse_middle = -1;
+int key_mouse_right = -1;
 int cursor_speed = MOVE_STEP;
 
 int screen_width = DEFAULT_SCREEN_WIDTH;
 int screen_height = DEFAULT_SCREEN_HEIGHT;
 
-struct {
+struct key_map_entry {
     const char *name;
     int code;
+    int remap_code_a;
+    int remap_code_b;
+    bool pass_through;
 } key_map[] = {
-    {"A", BTN_EAST}, {"B", BTN_SOUTH}, {"X", BTN_NORTH}, {"Y", BTN_WEST},
-    {"L1", BTN_TL}, {"R1", BTN_TR}, {"L2", BTN_TL2}, {"R2", BTN_TR2},
-    {"SELECT", BTN_SELECT}, {"START", BTN_START}, {"MENU", BTN_TRIGGER_HAPPY1},
-    {NULL, -1}
+    {"A", BTN_EAST, -1, -1, false},
+    {"B", BTN_SOUTH, -1, -1, false},
+    {"X", BTN_NORTH, -1, -1, false},
+    {"Y", BTN_WEST, -1, -1, false},
+    {"L1", BTN_TL, -1, -1, false},
+    {"R1", BTN_TR, -1, -1, false},
+    {"L2", BTN_TL2, -1, -1, false},
+    {"R2", BTN_TR2, -1, -1, false},
+    {"SELECT", BTN_SELECT, -1, -1, false},
+    {"START", BTN_START, -1, -1, false},
+    {"MENU", BTN_TRIGGER_HAPPY1, -1, -1, false},
+    {NULL, -1, -1, -1, false}
 };
 
 void get_screen_resolution() {
@@ -72,19 +87,65 @@ int get_key_code(const char *key_name) {
     return -1;
 }
 
+bool get_key_map_entry(int code, struct key_map_entry **key_map_entry) {
+    for (int i = 0; key_map[i].code != -1; i++) {
+        if (key_map[i].code == code) {
+            *key_map_entry = &key_map[i];
+            return true;
+        }
+    }
+    return false;
+}
+
 void sdl_nomouse() {
     SDL_ShowCursor(SDL_DISABLE);
-	SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
 }
 
 void create_default_config(const char *config_path) {
     FILE *file = fopen(config_path, "w");
     fprintf(file, "mode_toggle = L2\n");
     fprintf(file, "mouse_left = R1\n");
-    fprintf(file, "mouse_right = -1\n");
     fprintf(file, "mouse_middle = -1\n");
-	fprintf(file, "cursor_speed = 10\n");
+    fprintf(file, "mouse_right = -1\n");
+    fprintf(file, "cursor_speed = 10\n");
     fclose(file);
+}
+
+void parse_remap_key(char *value) {
+    // Format:
+    // remap = A: KEY_SPACE
+    // remap = START: KEY_LEFTCTRL + KEY_F5
+
+    char name[8], remap_name_a[32], remap_name_b[32];
+    bool is_combo = false;
+
+    if (sscanf(value, "%7[^:]: %31s + %31s", name, remap_name_a, remap_name_b) == 3) is_combo = true;
+    else if (sscanf(value, "%7[^:]: %31s", name, remap_name_a) == 2) is_combo = false;
+    else return;
+
+    int remap_code_a = libevdev_event_code_from_name(EV_KEY, remap_name_a);
+    if (remap_code_a == -1) return;
+
+    int remap_code_b = is_combo ? libevdev_event_code_from_name(EV_KEY, remap_name_b) : -1;
+    if (is_combo && remap_code_b == -1) return;
+
+    for (int i = 0; key_map[i].name; i++) {
+        if (strcmp(key_map[i].name, name) == 0) {
+            key_map[i].remap_code_a = remap_code_a;
+            key_map[i].remap_code_b = remap_code_b;
+            break;
+        }
+    }
+}
+
+void parse_pass_through(char *value) {
+    for (int i = 0; key_map[i].name; i++) {
+        if (strcmp(key_map[i].name, value) == 0) {
+            key_map[i].pass_through = true;
+            break;
+        }
+    }
 }
 
 void load_config(const char *config_path) {
@@ -96,14 +157,16 @@ void load_config(const char *config_path) {
             return;
         }
     }
-	
-    char key[32], value[32];
-    while (fscanf(file, "%31s = %31s", key, value) == 2) {
+
+    char key[32], value[80];
+    while (fscanf(file, "%31s = %79[^\r\n]", key, value) == 2) {
         if (strcmp(key, "mode_toggle") == 0) key_mode_toggle = get_key_code(value);
         else if (strcmp(key, "mouse_left") == 0) key_mouse_left = get_key_code(value);
-        else if (strcmp(key, "mouse_right") == 0) key_mouse_right = get_key_code(value);
         else if (strcmp(key, "mouse_middle") == 0) key_mouse_middle = get_key_code(value);
+        else if (strcmp(key, "mouse_right") == 0) key_mouse_right = get_key_code(value);
         else if (strcmp(key, "cursor_speed") == 0) cursor_speed = atoi(value);
+        else if (strcmp(key, "remap_key") == 0) parse_remap_key(value);
+        else if (strcmp(key, "pass_through") == 0) parse_pass_through(value);
     }
     fclose(file);
 }
@@ -116,9 +179,13 @@ int setup_uinput_device(int uinput_fd) {
 
     ioctl(uinput_fd, UI_SET_EVBIT, EV_KEY);
     ioctl(uinput_fd, UI_SET_KEYBIT, BTN_LEFT);
-    if (key_mouse_right != -1) ioctl(uinput_fd, UI_SET_KEYBIT, BTN_RIGHT);
     if (key_mouse_middle != -1) ioctl(uinput_fd, UI_SET_KEYBIT, BTN_MIDDLE);
-
+    if (key_mouse_right != -1) ioctl(uinput_fd, UI_SET_KEYBIT, BTN_RIGHT);
+    for (int i = 0; key_map[i].code != -1; i++) {
+        if (key_map[i].remap_code_a != -1) ioctl(uinput_fd, UI_SET_KEYBIT, key_map[i].remap_code_a);
+        if (key_map[i].remap_code_b != -1) ioctl(uinput_fd, UI_SET_KEYBIT, key_map[i].remap_code_b);
+        if (key_map[i].pass_through) ioctl(uinput_fd, UI_SET_KEYBIT, key_map[i].code);
+    }
 
     ioctl(uinput_fd, UI_SET_EVBIT, EV_ABS);
     ioctl(uinput_fd, UI_SET_ABSBIT, ABS_X);
@@ -137,7 +204,7 @@ int setup_uinput_device(int uinput_fd) {
 
     ioctl(uinput_fd, UI_DEV_SETUP, &usetup);
     ioctl(uinput_fd, UI_DEV_CREATE);
-    
+
     return 0;
 }
 
@@ -148,6 +215,19 @@ void send_mouse_event(int uinput_fd) {
         {.type = EV_SYN, .code = SYN_REPORT, .value = 0}
     };
     write(uinput_fd, events, sizeof(events));
+}
+
+void send_key_event(int uinput_fd, int code_a, int code_b, int value) {
+    struct input_event events[3];
+    int event_index = 0;
+    if (code_a != -1) events[event_index++] = (struct input_event){.type = EV_KEY, .code = code_a, .value = value};
+    if (code_b != -1) events[event_index++] = (struct input_event){.type = EV_KEY, .code = code_b, .value = value};
+    if (event_index > 0) {
+        events[event_index++] = (struct input_event){.type = EV_SYN, .code = SYN_REPORT, .value = 0};
+    } else {
+        return;
+    }
+    write(uinput_fd, events, sizeof(struct input_event) * event_index);
 }
 
 void send_click(int uinput_fd, int btn_code, int value) {
@@ -186,7 +266,7 @@ int main(int argc, char *argv[]) {
     snprintf(cmd, sizeof(cmd), "swaymsg seat seat0 cursor set %d %d", screen_height/2, screen_width/2); //screen is rotate (480x640)
     system(cmd);
     struct input_event ev;
-    int mode = 0;
+    int mode = key_mode_toggle == -1 ? 1 : 0;
     struct timespec last_move, last_click;
 
     clock_gettime(CLOCK_MONOTONIC, &last_move);
@@ -198,21 +278,30 @@ int main(int argc, char *argv[]) {
 
         while (read(fd, &ev, sizeof(ev)) > 0) {
             if (ev.type == EV_KEY) {
-                if (ev.code == key_mode_toggle && ev.value == 1) {
+                if (ev.code == key_mode_toggle && key_mode_toggle != -1 && ev.value == 1) {
                     mode = !mode;
-                    printf("Modo: %s\n", mode ? "Mouse" : "D-Pad");
                 } else if (mode) {
-					ioctl(fd, EVIOCGRAB, 1);
+                    ioctl(fd, EVIOCGRAB, 1);
                     if (ev.code == BTN_DPAD_UP) dpad_state.up = ev.value;
-                    if (ev.code == BTN_DPAD_DOWN) dpad_state.down = ev.value;
-                    if (ev.code == BTN_DPAD_LEFT) dpad_state.left = ev.value;
-                    if (ev.code == BTN_DPAD_RIGHT) dpad_state.right = ev.value;
-                    if (ev.code == key_mouse_left) send_click(uinput_fd, BTN_LEFT, ev.value);
-                    if (ev.code == key_mouse_right && key_mouse_right != -1) send_click(uinput_fd, BTN_RIGHT, ev.value);
-                    if (ev.code == key_mouse_middle && key_mouse_middle != -1) send_click(uinput_fd, BTN_MIDDLE, ev.value);
+                    else if (ev.code == BTN_DPAD_DOWN) dpad_state.down = ev.value;
+                    else if (ev.code == BTN_DPAD_LEFT) dpad_state.left = ev.value;
+                    else if (ev.code == BTN_DPAD_RIGHT) dpad_state.right = ev.value;
+                    else if (ev.code == key_mouse_left) send_click(uinput_fd, BTN_LEFT, ev.value);
+                    else if (ev.code == key_mouse_middle && key_mouse_middle != -1) send_click(uinput_fd, BTN_MIDDLE, ev.value);
+                    else if (ev.code == key_mouse_right && key_mouse_right != -1) send_click(uinput_fd, BTN_RIGHT, ev.value);
+
+                    struct key_map_entry *key_map_entry;
+                    if (get_key_map_entry(ev.code, &key_map_entry)) {
+                        if (key_map_entry->remap_code_a != -1 || key_map_entry->remap_code_b != -1) {
+                            send_key_event(uinput_fd, key_map_entry->remap_code_a, key_map_entry->remap_code_b, ev.value);
+                        }
+                        if (key_map_entry->pass_through) {
+                            send_key_event(uinput_fd, ev.code, -1, ev.value);
+                        }
+                    }
                 } else {
-					ioctl(fd, EVIOCGRAB, 0);
-				}
+                    ioctl(fd, EVIOCGRAB, 0);
+                }
             }
         }
 
@@ -225,14 +314,14 @@ int main(int argc, char *argv[]) {
                 if (dpad_state.down) dpad_state.posY = dpad_state.posY < screen_height ? dpad_state.posY + cursor_speed : screen_height;
                 if (dpad_state.left) dpad_state.posX = dpad_state.posX > 0 ? dpad_state.posX - cursor_speed : 0;
                 if (dpad_state.right) dpad_state.posX = dpad_state.posX < screen_width ? dpad_state.posX + cursor_speed : screen_width;
-                
+
                 send_mouse_event(uinput_fd);
                 last_move = now;
             }
         }
     }
 
-	ioctl(fd, EVIOCGRAB, 0);
+    ioctl(fd, EVIOCGRAB, 0);
     close(uinput_fd);
     close(fd);
     return 0;
