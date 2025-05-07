@@ -65,10 +65,10 @@ case $1 in
   *)
     GAME=$(cat "${GAME}")
     systemctl start fluidsynth
-    stickmod -c "${CONFIG_DIR}"/dpadmouse.cfg &
+    mousekbd -c "${CONFIG_DIR}"/mousekbd.cfg &
     sleep 1
     eval /usr/bin/scummvm --fullscreen --joystick=0 --themepath=/usr/config/scummvm/themes "${GAME}"
-    pkill -9 stickmod
+    pkill -9 mousekbd
     systemctl stop fluidsynth
   ;;
 esac

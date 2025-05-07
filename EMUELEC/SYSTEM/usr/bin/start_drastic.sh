@@ -47,11 +47,20 @@ ln -sf /storage/roms/nds /storage/.config/drastic/backup
 
 cd /storage/.config/drastic/
 
+sv=`cat /proc/sys/vm/swappiness`
+echo 10 > /proc/sys/vm/swappiness
+
+export LD_LIBRARY_PATH="/usr/lib/drastic:${LD_LIBRARY_PATH}"
+
 kill_sense &
-stickmod &
+stickmod -c /storage/.config/drastic/dpadmouse.cfg &
 sleep 1
 
 ./drastic "$1"
+sync
 
 pkill -9 kill_sense
 pkill -9 stickmod
+
+echo $sv > /proc/sys/vm/swappiness
+
