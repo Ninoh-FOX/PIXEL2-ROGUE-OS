@@ -72,6 +72,7 @@ Select + Start close the emulator.
 Select + button R2 or L2 open the service menu.
 select + button L1 fastfoward
 select + button r1 show fps
+menu take screenshot
 ```
 
 ### PortMaster ###
