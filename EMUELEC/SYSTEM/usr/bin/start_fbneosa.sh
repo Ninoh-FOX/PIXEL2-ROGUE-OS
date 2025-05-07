@@ -35,6 +35,21 @@ if [ ! -f "$FBNEO_CONFIG_INI" ]; then
   sync
 fi
 
+#set screenshots link
+
+if [ ! -d "$FBNEO_LOCAL/fbneo/screenshots" ]; then
+  ln -sf "/storage/roms/screenshots" "$FBNEO_LOCAL/fbneo/screenshots"
+  sync
+fi
+
+if [ ! -L "$FBNEO_LOCAL/fbneo/screenshots" ]; then
+  if [ -d "$FBNEO_LOCAL/fbneo/screenshots" ]; then
+    rm -rf "$FBNEO_LOCAL/fbneo/screenshots"
+  fi
+  ln -sf "/storage/roms/screenshots" "$FBNEO_LOCAL/fbneo/screenshots"
+  sync
+fi
+
 export SDL_GAMECONTROLLERCONFIG_FILE="$FBNEO_PATH/gamecontrollerdb.txt"
 
 if [ $(gpudriver) == "libmali" ]; then
