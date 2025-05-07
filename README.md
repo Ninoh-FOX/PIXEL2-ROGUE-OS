@@ -13,7 +13,8 @@ These are minor changes made to the original system such as script improvements 
 
 - Auto poweroff the machine when this is an 1%.
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
-- Update RETROARCH to version 1.20.0.
+- Update RETROARCH to version 1.21.0.
+- Emulation Station with scrapper support.
 - Added Custom Pico8 splore.
 - Added FBNEO STANDALONE.
 - Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
@@ -47,7 +48,7 @@ Note: This not is the boot system logo.
 controls: 
 
 ```
-Select + Menu = Open RA Menu.
+Menu = Open RA Menu.
 Select + Start = Close RA.
 Select + X = Take screenshot.
 Select + Y = Show fps.
@@ -62,11 +63,15 @@ Select + R2 = Up savestate slot.
 
 ### FBNeo standalone ###
 
+NOTE: the **stretch** screen option **only works with gpu panfrost** because **libmali** not have GL support.
+
 controls: 
 
 ```
 Select + Start close the emulator.
 Select + button R2 or L2 open the service menu.
+select + button L1 fastfoward
+select + button r1 show fps
 ```
 
 ### PortMaster ###
@@ -91,8 +96,8 @@ Start + Select: close de emulator.
 Controls:
 
 ```
-Button L2: set stylus mode, button R1 is touch, dpad move the stylus. (note: in this mode button menu or start+select not works)
-Button R2: swap screens.
+Button R2: set stylus mode, button A is touch, dpad move the stylus. (note: in this mode button menu or start+select not works)
+Button L2: swap screens.
 Button Menu: show drastic menu.
 Button Start+Select:  Close de emulator.
 ```
@@ -218,7 +223,12 @@ press enter and the password is:
 - Removed the FBneo SA shutdown feature from the Menu button to avoid closing the emulator at an unwanted time.
 - Added configuration options to FBneo SA in the ES menu.
 - Fixed mouse cursor synchronization in applications like Drastic.
-- Change host name to "rogue_pixel2"
-- Change root password to "rogue"
+- Change host name to "rogue_pixel2".
+- Change root password to "rogue".
+- fixed menu contro in RA.
+- Add new video options en ES to FBNEO-SA
+- Upgrade sdl2 libs.
+- Set not stick mouse only to drastic v1.
+- Added new mouse mode for Scummvmm (thanks to https://github.com/spinda).
 - Fixed minor OFW crashes.
 - another fixers.
