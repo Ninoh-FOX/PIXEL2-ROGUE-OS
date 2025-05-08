@@ -21,6 +21,7 @@ These are minor changes made to the original system such as script improvements 
 - Added Drastic mod version by Steward Fu.
 - Added mouse virtual emulator.
 - Added Portmaster for Pixel 2.
+- Clock set app for ES.
 
 ### Installation:
 
