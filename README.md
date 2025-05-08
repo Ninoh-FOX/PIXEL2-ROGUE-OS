@@ -138,7 +138,7 @@ cursor_speed = cursor speed (in numbre, default is 10, you can up this)
 
 Connect the device to the Internet and on a computer on the same local network, type the following into the terminal:
 
-`ssh root@192.1.1.***`   note: you need the ip of your device
+`ssh root@192.168.1.***`   note: you need the ip of your device
 
 press enter and the password is:
 
