@@ -124,11 +124,12 @@ If you have any separate key configurations, it would be:
 
 `stickmod -c /"configpath"/dpadmouse.cfg &`
 
-dpadmouse.cfg has 4 commands:
+dpadmouse.cfg has 5 commands:
 
 ```
 mode_toggle = is the butoon for switch dpad <> mouse (A, B, X, Y, L1, R1, R2, L2, START, SELECT or MENU)
 mouse_left = left button mouse to emulate (A, B, X, Y, L1, R1, R2, L2, START, SELECT or MENU, valor -1 disabled this button)
+mouse_middle = left button mouse to emulate (A, B, X, Y, L1, R1, R2, L2, START, SELECT or MENU, valor -1 disabled this button)
 mouse_right = right button mouse to emulate (A, B, X, Y, L1, R1, R2, L2, START, SELECT or MENU)
 cursor_speed = cursor speed (in numbre, default is 10, you can up this)
 ```
