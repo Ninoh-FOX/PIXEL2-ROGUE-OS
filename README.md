@@ -14,7 +14,7 @@ These are minor changes made to the original system such as script improvements 
 - Auto poweroff the machine when this is an 1%.
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
 - Update RETROARCH to version 1.21.0.
-- Emulation Station with scrapper support.
+- Emulation Station with scraper support.
 - Added Custom Pico8 splore.
 - Added FBNEO STANDALONE.
 - Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
