@@ -270,9 +270,20 @@
         <genre>Tool</genre>
         <releasedate>2025</releasedate>
      </game>
-	<game>
+     <game>
         <path>./Exit to IUX.sh</path>
         <name>Exit to IUX</name>
+        <developer>GKD</developer>
+        <publisher>GKD</publisher>
+        <image>./images/install-rocknix.svg</image>
+        <rating>0</rating>
+        <genre>Script</genre>
+        <releasedate>2025</releasedate>
+     </game>
+          <game>
+        <path>./ES-Switcher.sh</path>
+        <name>Switch ES launcher</name>
+        <desc>Change between ES launchers, stock ES with all options or ES with screenscraper support, this reboot the device for take the changes</desc>
         <developer>GKD</developer>
         <publisher>GKD</publisher>
         <image>./images/install-rocknix.svg</image>
