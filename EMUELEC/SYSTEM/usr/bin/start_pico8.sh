@@ -154,8 +154,8 @@ done
     sync
 
     touch /storage/roms/pico-8/gamelist.xml
-    swaymsg exit
+    #swaymsg exit
     sleep 1
-    systemctl restart emustation
+    #systemctl restart emustation
 fi
 shopt -u nocasematch

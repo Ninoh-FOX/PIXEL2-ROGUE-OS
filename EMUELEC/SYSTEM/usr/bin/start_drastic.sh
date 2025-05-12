@@ -50,7 +50,13 @@ cd /storage/.config/drastic/
 sv=`cat /proc/sys/vm/swappiness`
 echo 10 > /proc/sys/vm/swappiness
 
-export LD_LIBRARY_PATH="/usr/lib/drastic:${LD_LIBRARY_PATH}"
+if [ $(gpudriver) == "libmali" ]; then
+   export LD_LIBRARY_PATH="/usr/lib/drastic/libmali:${LD_LIBRARY_PATH}"
+fi
+
+if [ $(gpudriver) == "panfrost" ]; then
+   export LD_LIBRARY_PATH="/usr/lib/drastic/panfrost:${LD_LIBRARY_PATH}"
+fi
 
 kill_sense &
 stickmod -c /storage/.config/drastic/dpadmouse.cfg &
