@@ -25,18 +25,17 @@ These are minor changes made to the original system such as script improvements 
 
 ### Installation:
 
-As this repository is structured, the three main folders refer to the three partitions contained on the console's microSD card.
+Download the ROGUEOS-v1.0.zip, RogueOS-v1.0.z01, RogueOS-v1.0.z02 ... files, unzip the files (7zip for example) and flash the file  RogueOS-v1.0.img in a microsd, then resize the ROMS partition with any program you use for that:
 
-In the releases, you'll find two files: SYSTEM and STORAGE.7z.
+- Linux: Gparted
+- Windows: EaseUS Partition
+- Mac: diskutil
 
-### YOU NEED THE TWO FILES!! SYSTEM AND storage.7z.
+RogueOS-v1.0.img  SHA256: 22bf1b96b03f829876a5022804470bfc94654a947926ae80e92e206802b7be10
 
-The SYSTEM file is used to overwrite the existing file on the EMUELEC fat32 partition, which is the OS file system with the corrections.
+### Upgrading:
 
-The STORAGE.7z file contains the files that should be located in the root of the EXT4 STORAGE partition. 
-This file must be placed in the /roms/storageupdate directory (you will have to create the folder) to be installed at boot time. This is intended for people who do not have root access to ext4 file systems or user with Windows OS.
-
-All of this works on either a microSD card with the stock OS or with the configured PlumOS OS.
+Download SYSTEM / storage.7z file and put SYSTEM in EMUELEC partition and storage.7z in ROMS partition in /roms/storageupdate/.
 
 ### boot kernel logo:
 
