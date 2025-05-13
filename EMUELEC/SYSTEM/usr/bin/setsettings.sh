@@ -149,7 +149,8 @@ declare -a IS_32BIT=(   easyrpg_32b
                         fbalpha2012_32b
                         fbneo_32b
                         fceumm_mod_32b
-                        gpsp_mod_32b
+                        gpsp_32b
+                        desmume_32b
                         mame2003_plus_32b
                         mame_32b
                         nebularm_32b

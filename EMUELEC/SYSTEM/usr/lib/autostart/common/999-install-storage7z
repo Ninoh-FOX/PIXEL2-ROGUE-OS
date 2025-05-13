@@ -19,6 +19,21 @@ then
     sync
 fi
 
+CONFIG_FILE="/storage/.config/system/configs/system.cfg"
+HOSTNAME_LINE="system.hostname=rogue_pixel2"
+
+if [ -f "$CONFIG_FILE" ]; then
+    if grep -Fxq "$HOSTNAME_LINE" "$CONFIG_FILE"; then
+        echo "This is ROGUE OS."
+    else
+        poweroff
+    fi
+fi
+
+cp -f /usr/local/share/emulationstation/es_features.cfg /storage/.config/emulationstation/es_features.cfg
+cp -f /usr/local/share/emulationstation/es_systems.cfg /storage/.config/emulationstation/es_systems.cfg
+cp -f /usr/local/share/emulationstation/runemu.sh /storage/bin/overlay_usr_bin/runemu.sh
+
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
 
