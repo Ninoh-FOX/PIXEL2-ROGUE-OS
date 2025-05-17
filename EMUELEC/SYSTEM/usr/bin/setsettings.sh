@@ -1045,7 +1045,7 @@ function set_snesopts() {
 
 function set_dreamcastopts() {
     log "Set up Dreamcast..."
-    if [ "${CORE}" = "flycast" ]
+    if [ "${CORE}" = *"flycast"* ]
     then
         local FLYCASTDIR="${RETROARCH_PATH}/config/Flycast"
         if [ ! -d "${FLYCASTDIR}" ]
