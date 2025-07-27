@@ -1,0 +1,1 @@
+/usr/bin/start_gmu.sh

@@ -19,6 +19,20 @@ then
     sync
 fi
 
+if [ ! -f "/storage/.config/gmu/playlists/Start Music Player.sh" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists"
+   cp -f "/usr/config/gmu/playlists/Start Music Player.sh" "/storage/.config/gmu/playlists/Start Music Player.sh"
+   sync
+fi
+
+if [ ! -f "/storage/.config/gmu/playlists/Start Game Music Emulator.sh" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists"
+   cp -f "/usr/config/gmu/playlists/Start Game Music Emulator.sh" "/storage/.config/gmu/playlists/Start Game Music Emulator.sh"
+   sync
+fi
+
 CONFIG_FILE="/storage/.config/system/configs/system.cfg"
 HOSTNAME_LINE="system.hostname=rogue_pixel2"
 
