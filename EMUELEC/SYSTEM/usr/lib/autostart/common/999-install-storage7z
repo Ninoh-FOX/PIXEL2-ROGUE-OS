@@ -57,6 +57,21 @@ if [ -f "$CONFIG_FILE" ]; then
     fi
 fi
 
+set_config_value() {
+  local key="$1"
+  local value="$2"
+  if grep -q "^$key=" "$CONFIG_FILE"; then
+    sed -i "s|^$key=.*|$key=$value|" "$CONFIG_FILE"
+  else
+    echo "$key=$value" >> "$CONFIG_FILE"
+  fi
+}
+
+set_config_value 'music["Start Music Player.sh"].cpugovernor' 'powersave'
+set_config_value 'music["Start Music Player.sh"].gpuperf' 'low'
+set_config_value 'music["Start Game Music Emulator.sh"].cpugovernor' 'powersave'
+set_config_value 'music["Start Game Music Emulator.sh"].gpuperf' 'low'
+
 cp -f /usr/local/share/emulationstation/es_features.cfg /storage/.config/emulationstation/es_features.cfg
 cp -f /usr/local/share/emulationstation/es_systems.cfg /storage/.config/emulationstation/es_systems.cfg
 cp -f /usr/local/share/emulationstation/runemu.sh /storage/bin/overlay_usr_bin/runemu.sh
