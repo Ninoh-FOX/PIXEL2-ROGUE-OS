@@ -60,8 +60,11 @@ fi
 set_config_value() {
   local key="$1"
   local value="$2"
-  if grep -q "^$key=" "$CONFIG_FILE"; then
-    sed -i "s|^$key=.*|$key=$value|" "$CONFIG_FILE"
+  local key_escaped
+  key_escaped=$(printf '%s\n' "$key" | sed 's/[][&/\.^$*]/\\&/g')
+
+  if grep -q "$key_escaped" "$CONFIG_FILE"; then
+    sed -i "s#.*$key_escaped.*#$key=$value#" "$CONFIG_FILE"
   else
     echo "$key=$value" >> "$CONFIG_FILE"
   fi
