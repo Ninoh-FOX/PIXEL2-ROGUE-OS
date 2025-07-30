@@ -33,6 +33,13 @@ then
    sync
 fi
 
+if [ ! -f "/storage/.cache/connman/setting" ]
+then
+   rm "/storage/.cache/connman/setting"
+   cp -f "/usr/cache/connman/setting" "/storage/.cache/connman/setting"
+   sync
+fi
+
 CONFIG_FILE="/storage/.config/system/configs/system.cfg"
 HOSTNAME_LINE="system.hostname=rogue_pixel2"
 
