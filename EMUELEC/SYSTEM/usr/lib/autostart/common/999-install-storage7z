@@ -33,10 +33,10 @@ then
    sync
 fi
 
-if [ ! -f "/storage/.cache/connman/setting" ]
+if [ ! -f "/storage/.cache/connman/settings" ]
 then
-   rm "/storage/.cache/connman/setting"
-   cp -f "/usr/cache/connman/setting" "/storage/.cache/connman/setting"
+   rm "/storage/.cache/connman/settings"
+   cp -f "/usr/cache/connman/settings" "/storage/.cache/connman/settings"
    sync
 fi
 
