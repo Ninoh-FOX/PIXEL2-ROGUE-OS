@@ -103,6 +103,39 @@ Button Menu: show drastic menu.
 Button Start+Select:  Close de emulator.
 ```
 
+### GME player ###
+
+the default folder is /roms/music
+
+Controls:
+
+```
+Left/Right  Change track.
+Up/Down     tempo.
+Button A    Play file.
+Button B    Back to files selector, up directory.
+Button Y    Toggle track looping (infinite playback).
+Button X    Pause/unpause Toggle echo processing.
+Button L1   Enable/disable accurate emulation.
+Button R1   Reset tempo and turn channels back on.
+Button L2   previeus track in mode blocked.
+Button R2   next track in mode blocked.
+Guide-Menu  Block screen and keys.
+Select      EXIT.
+start       Pause/unpause.
+```
+support the following formats and systems:
+
+AY --  ZX Spectrum/Amstrad CPC
+GBS -- Nintendo Game Boy
+GYM -- Sega Genesis/Mega Drive
+HES -- NEC TurboGrafx-16/PC Engine
+KSS -- MSX Home Computer/other Z80 systems (doesn't support FM sound)
+NSF/NSFE -- Nintendo NES/Famicom (with VRC 6, Namco 106, and FME-7 sound)
+SAP -- Atari systems using POKEY sound chip
+SPC/RSN -- Super Nintendo/Super Famicom
+VGM/VGZ -- Sega Master System/Mark III, Sega Genesis/Mega Drive,BBC Micro
+
 ### usage the module dpad to mouse/touchscreen:
 
 the default setting is (you can changer this in /storage/.config/dpadmouse.cfg)
