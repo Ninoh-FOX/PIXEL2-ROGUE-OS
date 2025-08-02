@@ -113,7 +113,7 @@ Controls:
 ```
 Left/Right  Change track.
 Up/Down     tempo.
-Button A    Play file.
+Button A    Play file - stereo control.
 Button B    Back to files selector, up directory.
 Button Y    Toggle track looping (infinite playback).
 Button X    Pause/unpause Toggle echo processing.

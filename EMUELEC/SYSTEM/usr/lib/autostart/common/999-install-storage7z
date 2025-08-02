@@ -33,15 +33,15 @@ then
    sync
 fi
 
-if [ ! -f "/storage/.cache/connman/settings" ]
+if [ -f "/storage/.cache/connman/settings" ]
 then
+   rm "/storage/.cache/connman/settings"
    cp -f "/usr/cache/connman/settings" "/storage/.cache/connman/settings"
    sync
 fi
 
-if [ -f "/storage/.cache/connman/settings" ]
+if [ ! -f "/storage/.cache/connman/settings" ]
 then
-   rm "/storage/.cache/connman/settings"
    cp -f "/usr/cache/connman/settings" "/storage/.cache/connman/settings"
    sync
 fi
@@ -74,6 +74,14 @@ set_config_value 'music["Start Music Player.sh"].cpugovernor' 'powersave'
 set_config_value 'music["Start Music Player.sh"].gpuperf' 'low'
 set_config_value 'music["Start Game Music Emulator.sh"].cpugovernor' 'powersave'
 set_config_value 'music["Start Game Music Emulator.sh"].gpuperf' 'low'
+set_config_value 'system.power.audio' '1'
+set_config_value 'system.power.cpu' '1'
+set_config_value 'system.power.pcie' '1'
+set_config_value 'system.power.rtpm' '1'
+set_config_value 'system.power.wakeevents' '0'
+set_config_value 'system.power.wifi' '1'
+set_config_value 'system.powersave' '1'
+set_config_value 'system.suspendmode' 'mem'
 
 cp -f /usr/local/share/emulationstation/es_features.cfg /storage/.config/emulationstation/es_features.cfg
 cp -f /usr/local/share/emulationstation/es_systems.cfg /storage/.config/emulationstation/es_systems.cfg
