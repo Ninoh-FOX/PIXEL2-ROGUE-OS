@@ -1,0 +1,12 @@
+README.md
+setup.py
+fdt/__init__.py
+fdt/__main__.py
+fdt/header.py
+fdt/items.py
+fdt/misc.py
+fdt.egg-info/PKG-INFO
+fdt.egg-info/SOURCES.txt
+fdt.egg-info/dependency_links.txt
+fdt.egg-info/entry_points.txt
+fdt.egg-info/top_level.txt
