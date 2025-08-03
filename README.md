@@ -23,6 +23,7 @@ These are minor changes made to the original system such as script improvements 
 - Added Drastic mod version by Steward Fu.
 - Added mouse virtual emulator.
 - Added Portmaster for Pixel 2.
+- Set toot "Charging screen off", this put the console in powersave and screen off in charging mode, not is A SLEEP MODE, is similar
 - Clock set app for ES.
 
 ### Installation:
