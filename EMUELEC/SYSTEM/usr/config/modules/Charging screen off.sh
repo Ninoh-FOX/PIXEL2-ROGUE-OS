@@ -5,10 +5,16 @@
 EVENTLOG="/var/log/powersave_charger.log"
 
 # Función para detectar estado del cargador
-charger_connected() {
+charging() {
     local status
     status=$(cat /sys/class/power_supply/battery/status 2>/dev/null)
     [ "$status" = "Charging" ]
+}
+
+usb_connected() {
+    local status
+    status=$(cat /sys/class/power_supply/ac/online 2>/dev/null)
+    [ "$status" = "1" ]
 }
 
 # Funciones para apagar y encender pantalla
@@ -28,19 +34,34 @@ hw_display_on() {
     log $0 "Display turned on"
 }
 
-# Funciones para controlar volumen según tu configuración
+# Guardar estados originales de volumen (al inicio del script, antes de mutear)
+ORIG_HEADPHONE_STATE=$(amixer -c 0 get Headphone | awk -F'[][]' '/Playback.*\[on\]|\[off\]/ {print $2; exit}')
+ORIG_SPEAKER_STATE=$(amixer -c 0 get Speaker   | awk -F'[][]' '/Playback.*\[on\]|\[off\]/ {print $2; exit}')
+log $0 "Estados originales: Headphone=${ORIG_HEADPHONE_STATE}, Speaker=${ORIG_SPEAKER_STATE}"
+
+# Función para mutear volumen (siempre pone off)
 volume_mute() {
-    local mixer=${DEVICE_AUDIO_MIXER:-Master}
-    amixer -c 0 -M set "${mixer}" 0% >${EVENTLOG} 2>&1
-    log $0 "Volume muted"
+    amixer -c 0 set Headphone off >"${EVENTLOG}" 2>&1
+    amixer -c 0 set Speaker off >"${EVENTLOG}" 2>&1
+    log $0 "Volume muted (Headphone and Speaker off)"
 }
 
+# Función para restaurar volumen al estado original
 volume_restore() {
-    local mixer=${DEVICE_AUDIO_MIXER:-Master}
-    local vol=$(get_setting "audio.volume" 2>/dev/null)
-    if [ -n "$vol" ]; then
-        amixer -c 0 -M set "${mixer}" "${vol}%" >${EVENTLOG} 2>&1
-        log $0 "Volume restored to ${vol}%"
+    if [ "$ORIG_HEADPHONE_STATE" = "on" ]; then
+        amixer -c 0 set Headphone on >"${EVENTLOG}" 2>&1
+        log $0 "Restored Headphone to ON"
+    else
+        amixer -c 0 set Headphone off >"${EVENTLOG}" 2>&1
+        log $0 "Restored Headphone to OFF"
+    fi
+
+    if [ "$ORIG_SPEAKER_STATE" = "on" ]; then
+        amixer -c 0 set Speaker on >"${EVENTLOG}" 2>&1
+        log $0 "Restored Speaker to ON"
+    else
+        amixer -c 0 set Speaker off >"${EVENTLOG}" 2>&1
+        log $0 "Restored Speaker to OFF"
     fi
 }
 
@@ -68,9 +89,12 @@ set_powersave() {
 }
 
 # Main script
-if ! charger_connected; then
-    log $0 "Cargador no conectado. Saliendo del script."
-    exit 0
+
+if ! usb_connected; then
+    if ! charging; then
+        log $0 "Cargador no conectado. Saliendo del script."
+        exit 0
+    fi
 fi
 
 log $0 "Cargador conectado. Aplicando powersave, apagando pantalla y sonido."
@@ -81,7 +105,7 @@ set_powersave
 
 log $0 "Entrando en bucle de monitorización hasta desconectar cargador..."
 
-while charger_connected; do
+while usb_connected || charging; do
     sleep 5
 done
 
