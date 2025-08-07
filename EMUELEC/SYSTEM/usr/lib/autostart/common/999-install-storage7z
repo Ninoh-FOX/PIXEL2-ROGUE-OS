@@ -46,6 +46,15 @@ then
    sync
 fi
 
+for cfg in /storage/.config/retroarch/retroarch.cfg /tmp/.retroarch.cfg; do
+    if [ -f "$cfg" ]; then
+        if grep -q '^video_threaded = "true"$' "$cfg"; then
+            sed -i 's/^video_threaded = "true"$/video_threaded = "false"/' "$cfg"
+            sync
+        fi
+    fi
+done
+
 CONFIG_FILE="/storage/.config/system/configs/system.cfg"
 HOSTNAME_LINE="system.hostname=rogue_pixel2"
 
