@@ -145,6 +145,30 @@ support the following formats and systems:
 - SPC/RSN -- Super Nintendo/Super Famicom
 - VGM/VGZ -- Sega Master System/Mark III, Sega Genesis/Mega Drive,BBC Micro
 
+
+### GFS player ###
+
+the default folder is /roms/music/GBA
+
+Controls:
+
+```
+Left/Right  Change track.
+Button A    Play file.
+Button B    Back to files selector, up directory.
+Button Y    Toggle track looping (infinite playback).
+Button L1   Jump page up.
+Button R1   Jump page down.
+Button L2   previeus track in mode blocked.
+Button R2   next track in mode blocked.
+Guide-Menu  Block screen and keys.
+Select      EXIT.
+start       Pause/unpause.
+```
+support the following formats and systems:
+
+- MINIGFS -- Nintendo Game Boy Advanece
+
 ### usage the module dpad to mouse/touchscreen:
 
 the default setting is (you can changer this in /storage/.config/dpadmouse.cfg)
