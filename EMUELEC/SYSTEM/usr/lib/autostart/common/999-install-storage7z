@@ -19,6 +19,12 @@ then
     sync
 fi
 
+if [ ! -f "/storage/.config/gmu/gmu.cfg" ]
+then
+   cp -f "/usr/config/gmu/gmu.cfg" "/storage/.config/gmu/gmu.cfg"
+   sync
+fi
+
 if [ ! -f "/storage/.config/gmu/playlists/Start Music Player.sh" ]
 then
    mkdir -p "/storage/.config/gmu/playlists"
@@ -30,6 +36,13 @@ if [ ! -f "/storage/.config/gmu/playlists/Start Game Music Emulator.sh" ]
 then
    mkdir -p "/storage/.config/gmu/playlists"
    cp -f "/usr/config/gmu/playlists/Start Game Music Emulator.sh" "/storage/.config/gmu/playlists/Start Game Music Emulator.sh"
+   sync
+fi
+
+if [ ! -f "/storage/.config/gmu/playlists/Start GFS player.sh" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists"
+   cp -f "/usr/config/gmu/playlists/Start GFS player.sh" "/storage/.config/gmu/playlists/Start GFS player.sh"
    sync
 fi
 
@@ -83,6 +96,8 @@ set_config_value 'music["Start Music Player.sh"].cpugovernor' 'powersave'
 set_config_value 'music["Start Music Player.sh"].gpuperf' 'low'
 set_config_value 'music["Start Game Music Emulator.sh"].cpugovernor' 'powersave'
 set_config_value 'music["Start Game Music Emulator.sh"].gpuperf' 'low'
+set_config_value 'music["Start GFS player.sh"].cpugovernor' 'ondemand'
+set_config_value 'music["Start GFS player.sh"].gpuperf' 'auto'
 set_config_value 'system.power.audio' '1'
 set_config_value 'system.power.cpu' '1'
 set_config_value 'system.power.pcie' '1'
