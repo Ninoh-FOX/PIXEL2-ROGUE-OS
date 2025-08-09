@@ -168,7 +168,7 @@ start       Pause/unpause.
 ```
 support the following formats and systems:
 
-- MINIGFS/GSF -- Nintendo Game Boy Advanece
+- MINIGSF/GSF -- Nintendo Game Boy Advanece
 
 ### usage the module dpad to mouse/touchscreen:
 
