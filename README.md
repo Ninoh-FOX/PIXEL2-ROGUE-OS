@@ -20,6 +20,7 @@ These are minor changes made to the original system such as script improvements 
 - Added FBNEO STANDALONE.
 - Custom GMU music player rewrite for the machine with blockkeys fuctions and screenoff.
 - Custom GME game music emulator player rewrite for the machine with files selection, blockkeys fuctions and screenoff.
+- Custom GSF music player rewrite for the machine with, files selector, blockkeys fuctions and screenoff.
 - Added Drastic mod version by Steward Fu.
 - Added mouse virtual emulator.
 - Added Portmaster for Pixel 2.
@@ -167,7 +168,7 @@ start       Pause/unpause.
 ```
 support the following formats and systems:
 
-- MINIGFS/GSF -- Nintendo Game Boy Advanece
+- MINIGSF/GSF -- Nintendo Game Boy Advanece
 
 ### usage the module dpad to mouse/touchscreen:
 
