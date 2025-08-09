@@ -146,7 +146,7 @@ support the following formats and systems:
 - VGM/VGZ -- Sega Master System/Mark III, Sega Genesis/Mega Drive,BBC Micro
 
 
-### GFS player ###
+### GSF player ###
 
 the default folder is /roms/music/GBA
 
@@ -167,7 +167,7 @@ start       Pause/unpause.
 ```
 support the following formats and systems:
 
-- MINIGFS -- Nintendo Game Boy Advanece
+- MINIGFS/GSF -- Nintendo Game Boy Advanece
 
 ### usage the module dpad to mouse/touchscreen:
 
