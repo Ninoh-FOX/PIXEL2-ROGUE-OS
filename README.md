@@ -158,6 +158,7 @@ Left/Right  Change track.
 Button A    Play file.
 Button B    Back to files selector, up directory.
 Button Y    Toggle track looping (infinite playback).
+Butoon X    BASS on/off.
 Button L1   Jump page up.
 Button R1   Jump page down.
 Button L2   previeus track in mode blocked.
