@@ -301,4 +301,14 @@
         <genre>Script</genre>
         <releasedate>2025</releasedate>
      </game>
+     <game>
+        <path>./scraper.sh</path>
+        <name>Scraper app</name>
+        <developer>Ninoh-FOX</developer>
+        <publisher>Ninoh-FOX</publisher>
+        <image>./images/scraper.png</image>
+        <rating>0</rating>
+        <genre>Tool</genre>
+        <releasedate>2025</releasedate>
+     </game>
 </gameList>
