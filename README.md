@@ -14,6 +14,7 @@ These are minor changes made to the original system such as script improvements 
 - Auto poweroff the machine when this is an 1%.
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
 - Update RETROARCH to version 1.21.0.
+- Support for run PYXEL games.
 - Emulation Station with scraper support. (Switch ES launcher tool)
 - Added Scraper App.
 - Added Custom Pico8 splore.
