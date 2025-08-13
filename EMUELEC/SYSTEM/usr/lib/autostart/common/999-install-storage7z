@@ -112,6 +112,19 @@ cp -f /usr/local/share/emulationstation/es_features.cfg /storage/.config/emulati
 cp -f /usr/local/share/emulationstation/es_systems.cfg /storage/.config/emulationstation/es_systems.cfg
 cp -f /usr/local/share/emulationstation/runemu.sh /storage/bin/overlay_usr_bin/runemu.sh
 
+#set pyxel
+
+if [ ! -f /storage/.local/bin/pyxel ]
+then
+    cp -r /usr/local/share/pyxel/storage/.* /storage/
+    chmod +x /storage/.local/bin/* 2>/dev/null
+    chmod +x /storage/.local/lib/* 2>/dev/null
+    mkdir /roms/pyxel
+    cp -r /usr/local/share/pyxel/storage/.local/lib/python3.11/site-packages/pyxel/examples/* /roms/pyxel/
+    sync
+    reboot
+fi
+
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
 

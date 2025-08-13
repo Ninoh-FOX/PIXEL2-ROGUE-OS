@@ -311,4 +311,14 @@
         <genre>Tool</genre>
         <releasedate>2025</releasedate>
      </game>
+     <game>
+        <path>./pyxel_update.sh</path>
+        <name>Pyxel update</name>
+        <developer>Ninoh-FOX</developer>
+        <publisher>Ninoh-FOX</publisher>
+        <image>./images/pyxel.png</image>
+        <rating>0</rating>
+        <genre>Tool</genre>
+        <releasedate>2025</releasedate>
+     </game>
 </gameList>
