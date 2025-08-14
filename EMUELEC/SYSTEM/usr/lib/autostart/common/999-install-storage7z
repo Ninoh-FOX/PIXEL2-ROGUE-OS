@@ -32,10 +32,24 @@ then
    sync
 fi
 
+if [ ! -f "/storage/.config/gmu/playlists/images/Start Music Player.png" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists/images"
+   cp -f "/usr/config/gmu/playlists/images/Start Music Player.png" "/storage/.config/gmu/playlists/images/Start Music Player.png"
+   sync
+fi
+
 if [ ! -f "/storage/.config/gmu/playlists/Start Game Music Emulator.sh" ]
 then
    mkdir -p "/storage/.config/gmu/playlists"
    cp -f "/usr/config/gmu/playlists/Start Game Music Emulator.sh" "/storage/.config/gmu/playlists/Start Game Music Emulator.sh"
+   sync
+fi
+
+if [ ! -f "/storage/.config/gmu/playlists/images/Start Game Music Emulator.png" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists/images"
+   cp -f "/usr/config/gmu/playlists/images/Start Game Music Emulator.png" "/storage/.config/gmu/playlists/images/Start Game Music Emulator.png"
    sync
 fi
 
@@ -44,6 +58,13 @@ then
    mkdir -p "/storage/.config/gmu/playlists"
    rm -f "/storage/.config/gmu/playlists/Start GFS player.sh"
    cp -f "/usr/config/gmu/playlists/Start GSF player.sh" "/storage/.config/gmu/playlists/Start GSF player.sh"
+   sync
+fi
+
+if [ ! -f "/storage/.config/gmu/playlists/images/Start GSF player.png" ]
+then
+   mkdir -p "/storage/.config/gmu/playlists/images"
+   cp -f "/usr/config/gmu/playlists/images/Start GSF player.png" "/storage/.config/gmu/playlists/images/Start GSF player.png"
    sync
 fi
 
