@@ -146,6 +146,9 @@ then
     reboot
 fi
 
+ldconfig
+sync
+
 if [ -f /storage/roms/storageupdate/storage.7z ]
 then
 
