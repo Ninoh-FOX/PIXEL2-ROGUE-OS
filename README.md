@@ -116,6 +116,22 @@ Button Menu: show drastic menu.
 Button Start+Select:  Close de emulator.
 ```
 
+### Drastic 2 ###
+
+Controls:
+
+```
+Button R2: set stylus mode, button A is touch, dpad move the stylus.
+Button L2: swap screens.
+Button Menu + select: show drastic menu.
+Button Menu + start: show drastic2 menu.
+Button Menu + L1: close drastic and save config.
+Button Start + Select: close drastic
+Button Menu + dpad left-right: change screen configuration.
+Button Menu + Y: Change border overlay / stylus overlay.
+Button Menu + B: Change screen filter.
+```
+
 ### GME player ###
 
 the default folder is /roms/music
