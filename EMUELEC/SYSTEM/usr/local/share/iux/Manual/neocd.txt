@@ -1,0 +1,10 @@
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Neo-Geo, a rather expensive ($650) home console system released by SNK in 1990, was actually a home-version adaptation of SNK's Multi-Video System (MVS) arcade board. As a result, the Neo-Geo could perfectly replicate the standard of SNK's arcade games.

@@ -1,0 +1,19 @@
+MGBA Core GBA Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The MGBA core GBA emulator offers better compatibility than the GPSP core, supporting GBA/GBC/GB games. However, it has weaker support for modified games compared to GPSP.
+Game Boy Advance (GBA)
+Released by Nintendo on March 21, 2001, the Game Boy Advance (GBA) is the second-generation portable gaming console. Its most notable feature is a color TFT LCD screen. Priced at 9,800 yen, it is backward-compatible with games from the previous-generation Game Boy and Game Boy Color. The GBA was launched after Nintendo's prior release of the Game Boy Color, which featured a color LCD screen. The GBA had two revised models: the GBA SP (released in 2003) and the GBM (released in 2005). By 2010, the GBA had sold a cumulative 81,510,000 units worldwide.
+Notes:
+If a game fails to launch or experiences screen glitches, try switching the core.
+How to Use Cheat Codes:
+Open the menu and select Cheats → Load Cheat File (Overwrite) → Choose the cheat file for the current game.
+Finally, enable the desired cheat codes and click Apply Changes.
+

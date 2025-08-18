@@ -1,0 +1,20 @@
+Bandai WSC Swan Game Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+Developed by the renowned Japanese toy manufacturer BANDAI, it uses a 16-bit CPU. Although it features a black-and-white liquid crystal display, its resolution reaches 224x144 dots, allowing it to present quite beautiful visuals. Its most notable feature is the ability to play games in both portrait and landscape orientations, enhancing the gaming experience. The participation of numerous manufacturers, especially top-tier game developers like SQUARE, ensured that the WS had no shortage of excellent games.
+Specifications:
+CPU: 16-bit (3.072 MHz clock speed)
+LCD size: 39×55 mm
+LCD resolution: 224×144 dots (black-and-white FSTN reflective LCD)
+Weight (without batteries): 93 grams
+Dimensions: 74.3×121×17.5 mm (with rechargeable batteries) / 74.3×121×24.3 mm (with AA batteries)
+Sound: Piezoelectric sound device with headphone jack
+After leaving Nintendo, Gunpei Yokoi, the "father of the GB" and industry legend, founded his own company and began designing and developing the new-generation handheld WONDER SWAN. The company was later acquired by Bandai, and the WONDER SWAN became Bandai's gateway into the handheld gaming hardware market.
+Although the Wonder Swan was highly anticipated by the industry and Bandai, it failed to replicate the GB's success. It quickly lost the competition against the GB and subsequent handhelds, directly leading Bandai to announce its complete withdrawal from the handheld market in 2003.

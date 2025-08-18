@@ -1,0 +1,15 @@
+Picodrive Core MD-32X Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Picodrive core is a highly compatible MD emulator capable of running Sega 16/32-bit games and MD-CD titles. The SUPER 32X, a peripheral launched by Sega Japan in 1994 to expand hardware capabilities, upgrades the Mega Drive from 16-bit to 32-bit performance when connected. However, due to factors such as high cost, compatibility issues, and a lack of software, the SUPER 32X failed to meet Sega's pre-launch expectations and ended in a meteoric downfall.
+The 32X was officially released in North America on November 21, 1994. Saddled with poor 口碑 (public perception), insufficient software, and the impending launch of the Saturn, its prospects were bleak. By the following March, sales had reached only around 660,000 units.
+In October 1995, President Hayao Nakayama ordered the discontinuation of the 32X to focus on Saturn marketing and software development. Unsold 32X units flooded shelves, forcing repeated price cuts until they reached $19.95—about one-eighth of the original launch price.
+In Japan, where the MD had low penetration, the 32X's Japanese release came 11 days after the Saturn and coincided with the Sony PS launch, resulting in pitiful sales.
+In 1996, Sega repurposed leftover 32X hardware by integrating a full Japanese 32X motherboard into "Picture Magic," a touch-based photo editor for its Digio SJ-1 digital camera—a quirky way to utilize excess inventory.

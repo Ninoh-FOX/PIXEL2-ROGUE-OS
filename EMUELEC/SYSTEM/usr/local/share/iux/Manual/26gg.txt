@@ -1,0 +1,24 @@
+Sega Game Gear (GG) Handheld Console
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+On August 8, 1990, Sega launched its first handheld console, the "Game Gear (GG)," designed to compete with Nintendo's "Game Boy."
+Thanks to its powerful hardware, the Game Gear surpassed other contemporary handhelds in graphics, sound, and ergonomics. However, its color LCD screen caused enormous power consumption, and its high performance made the console bulky. Gameplay time was limited to just 3 hours—far shorter than the Game Boy's 8-hour battery life at the time. Beyond its distinct advantages and disadvantages, Sega's strategy of porting major titles from the Mega Drive to the Game Gear led to a shortage of original games (only 151 GG games were released in Japan, mostly ports). Eventually, the console gradually faded from the market.
+Top 10 Games
+Despite its sparse library, the GG had several classics. The top 10 games include:
+Sonic & Tails
+RoboCop
+GG Aleste 2
+GG Daisenryaku (GG Grand Strategy)
+Syndicate
+Phantasy Star
+Golden Axe
+Yu Yu Hakusho 2
+Escape from Mars
+Megami Tensei (Shin Megami Tensei)

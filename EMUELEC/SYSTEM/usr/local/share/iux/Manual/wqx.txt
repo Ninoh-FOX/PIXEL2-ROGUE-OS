@@ -1,0 +1,2 @@
+WinCE Star Emulator
+Operation Instructions: Press ST+SEto exit the program. Within the program, press the L2 key to exit the currently running game and return to the main interface.

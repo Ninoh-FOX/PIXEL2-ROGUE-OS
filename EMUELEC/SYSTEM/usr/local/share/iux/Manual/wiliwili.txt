@@ -1,0 +1,2 @@
+It needs to support Wi-Fi, and an external OTG USB 2.4G driver-free network card is also acceptable.
+

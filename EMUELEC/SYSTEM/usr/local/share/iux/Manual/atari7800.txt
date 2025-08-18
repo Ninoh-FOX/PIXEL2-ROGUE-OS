@@ -1,0 +1,13 @@
+Atari 7800 Console Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+Release Date: 1984 / 1986
+Notable Games: Joust, Xevious, Ball Blazer
+Although initially developed as a successor to the Atari 5200, the Atari 7800's release was delayed for years following the company's change of ownership. Upon re-release, the 7800 emerged as a strong competitor to Nintendo and Sega consoles in the market. If the Atari 7800 had launched as originally planned in 1984, it likely would have had a deeper and more far-reaching impact on the gaming industry than its later re-release version. The console set new standards for affordable gaming with its relatively low-cost hardware and full compatibility with older Atari consoles. Despite limited success due to a lack of support from Atari Corporation, the 7800's design remained exceptional, delivering a complete arcade experience in the home.

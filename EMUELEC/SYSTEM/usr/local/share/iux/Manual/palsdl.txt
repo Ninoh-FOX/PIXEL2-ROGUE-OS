@@ -1,0 +1,43 @@
+Chinese Paladin (仙剑奇侠传)
+Button Instructions:
+A: Confirm
+B: Menu
+X: Repeat Last Spell
+Y: Auto-Attack
+L1: Flee/Exit
+R1: Defend
+L2 (Mini): Page Up
+R2 (Mini): Page Down
+F2 (Mini): Use Item
+F1 (Mini): Discard Item
+Select: Check Status
+Start: Confirm
+Cheat Instructions:
+Map Cheats: Hold X or Y on the map to move freely through obstacles.
+Combat Cheats: Hold A before performing different actions in battle:
+Hold A before attacking: Deal 30,000 HP damage.
+Hold A before taking damage: Take only 1 HP damage.
+Hold A before fleeing: Flee successfully every time.
+Hold A before stealing: Steal items guaranteed.
+Hidden Story Trigger (Dreamland Plot Conditions):
+Complete the event of hiring a doctor for Old Man Ding.
+Complete the event of helping the poor girl in Suzhou.
+Return the fishing rod.
+Help the scholar but only accept 1,000 Wen as reward.
+Complete the love letter event in the Capital.
+Complete the beggar and prostitute event.
+Pay the fortune teller's reward.
+Unlocked Plot Elements (after entering Dreamland):
+Peach Garden Sword Immortal
+Dayu Xirang Immortal Beast
+Soul Resurrection
+Lin Yueru Revival
+Nuwa Trial
+Baiyue's Escape
+Two final endings: Zhao Linger's sacrifice or the perfect ending (explore independently).
+After meeting all conditions, speaking to the fortune teller will trigger changed dialogue and unlock the hidden plot.
+Note on Difficulty:
+The perfect route has been fully tested. A bug causes some bosses to self-destruct for instant victory (beneficial for saving time). The game is highly challenging—choose to play normally or use cheats based on preference. Enjoy!
+Additional Settings:
+If the default music volume overwhelms sound effects, edit the sdlpal.cfg file in the game directory and set:
+MusicVolume=50

@@ -1,0 +1,18 @@
+GAMBATT Core GB/GBC Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The GAMBATT core GB/GBC emulator is an excellent and long-established emulator, known for its fast speed and high game compatibility. It is highly recommended for use.
+In 1989, Nintendo released the Game Boy console, bundled with a Tetris cartridge (still one of the most popular games). It remains the best-selling portable gaming console. The Game Boy (GB) was officially launched on April 21, 1989, designed by Gunpei Yokoi. The design concept of the GB can be traced back to Nintendo's "Game&Watch" series developed in the late 1970s. The GBC (Game Boy Color) is a color-screen portable video game console developed by Nintendo Japan (commonly known as a handheld console). It is an improved version of the original Nintendo Game Boy, officially released on October 21, 1998, at a price of 6,800 yen. The last game for the GBC was released on May 11, 2001.
+Notes:
+If a game fails to launch or experiences screen glitches, try switching the core.
+How to Use Cheat Codes:
+Open the menu and select Cheats → Load Cheat File (Overwrite) → Choose the cheat file for the current game.
+Finally, enable the desired cheat codes and click Apply Changes.
+

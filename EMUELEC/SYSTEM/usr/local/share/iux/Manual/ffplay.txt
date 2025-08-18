@@ -1,0 +1,9 @@
+ffplay Video Player
+Shortcut Keys:
+R1: Fast-forward
+R2: Skip segment (forward)
+L1: Rewind
+L2: Skip segment (backward)
+Start + Select: Exit
+B: Pause
+A: Mute

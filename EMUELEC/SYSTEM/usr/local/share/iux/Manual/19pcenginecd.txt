@@ -1,0 +1,21 @@
+PCE-fast Core PCE-CD Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The PCE-fast core PCE-CD emulator supports cheat codes.
+Developed jointly by Japanese companies Hudson and NEC, the console was released by NEC in 1987. The PC Engine was the first home console with an optional CD module.
+Specifications:
+CPU: 8-bit 7.2MHz (with a custom color processing unit)
+Initially, Hudson was seeking financial support for its designed home console, while NEC was looking for an entry into the video game market. The two quickly partnered up. The PC Engine was a remarkably compact home console, primarily due to its efficient three-chip architecture and the HuCard—a credit card-sized data cartridge. It utilized an enhanced MOSTechnology 65C02 processor, a specially designed 16-bit graphics processor, and a dedicated video encoding chip, all developed by Hudson.
+The PC Engine was extremely popular in Japan and, shortly after its release, outsold Nintendo’s Famicom (FC) in sales (over 12 consoles were launched between 1987 and 1993). It could display 512 colors simultaneously at various resolutions and featured robust graphics tiling capabilities. Hudson’s chroma encoder transmitted more vibrant and colorful video signals than the FC and Sega Mega Drive, though the system wasn’t publicly revealed until 1990.
+While the PC Engine’s limitations became evident with advancements in graphics technology, many gamers still preferred it. A key reason for its sustained popularity was its support for adult-only games, which extended its market lifespan far beyond 同期 (contemporary) consoles. New games for the PC Engine were released as late as 1999.
+As the first home console with an optional CD module, the PC Engine offered the standard benefits of CD media: larger storage capacity, cheaper media costs, and compatibility with Red Book standard CD audio. Its efficient design, support from major Japanese game developers, and CD-ROM expansion capability gave it a vast library of games. Both HuCard and CD formats boasted hundreds of titles.
+
+
+

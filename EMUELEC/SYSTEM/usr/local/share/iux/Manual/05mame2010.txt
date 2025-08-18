@@ -1,0 +1,15 @@
+MAME2010 Arcade Emulator
+The MAME2010 arcade emulator has the feature that it can open some games which cannot be launched in MAME2003plus, 
+though it supports fewer games than MAME2003plus. 
+If a game cannot be opened in MAME2003plus, you can try using MAME2010.
+To use cheat codes: Press L2 to open the menu, select cheat, then choose cheats to view the cheat codes.
+
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  

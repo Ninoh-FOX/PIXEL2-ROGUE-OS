@@ -11,6 +11,8 @@ These are minor changes made to the original system such as script improvements 
 
 ### SPECIAL FEACTURES:
 
+- Upgrade Kernel to version build JUN 19 2025
+- Upgrade IUX to version 2.6 build MAY 29 2025 with wifi fuctions.
 - Auto poweroff the machine when this is an 1%.
 - Vibration warning (vibrate 3 times) when the battery is 10% and 5%.
 - Update RETROARCH to version 1.21.0.

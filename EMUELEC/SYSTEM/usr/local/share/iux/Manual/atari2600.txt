@@ -1,0 +1,13 @@
+Atari 2600 Console Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Atari 2600, released by Atari in October 1977, was a highly popular gaming console in its time and became a representative system of the second generation of video games. Classic games included Adventure, Pong, Asteroids, and Pac-Man.
+Atari's History: The Atari 2600, launched by Atari in October 1977, was a groundbreaking console that defined the second generation of gaming. Iconic titles such as Adventure, Pong, Asteroids, and Pac-Man made it a cultural phenomenon. In 1976, Atari introduced the Atari 2600 in the United States, marking the first truly home video game console system in history. The Atari 2600 is widely regarded as the ancestor of modern gaming consoles.
+Decades of Legacy: Since its release in October 1977, the Atari 2600 has spanned over 30 years. During its lengthy 170-month lifecycle (production ended on January 1, 1992), the console sold a total of 30 million units worldwide.

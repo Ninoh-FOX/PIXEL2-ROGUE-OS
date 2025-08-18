@@ -1,0 +1,16 @@
+Yabasanshiro Sega Saturn (SS) Emulator Standalone Version
+The Yabasanshiro Sega Saturn (SS) emulator standalone version offers fast speed and supports high-definition resolution, though compatibility is poor for some games.
+Notes:
+If a game fails to launch or experiences screen glitches, try the SS-RA emulator. For Saturn Bomberman, press the Start button after starting the game; cutscenes may cause frame freezing.
+Menu options translation:
+Press Select to bring up the menu.
+Player 1: Configure Player 1's controller. If buttons are unresponsive, enter this option and toggle Analog Mode.
+Player 2: Configure Player 2's controller.
+Config: Go to Original and switch to Native to enable high-definition resolution.
+Exit: Quit the emulator.
+Reset: Restart the game.
+Save State: Save the game progress.
+Load State: Load the saved game progress.
+Open CD Tray: Eject the virtual CD.
+Show/Hide FPS: Toggle display of frames per second.
+Enable/Disable Frame Skip: Toggle frame skipping.

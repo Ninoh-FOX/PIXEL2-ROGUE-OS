@@ -1,0 +1,18 @@
+Snes9X Core SFC Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Snes9X core SFC emulator supports cheat codes (Game Genie).
+The Super Nintendo Entertainment System (officially known as the Super Famicom in Japan, abbreviated as SFC; and Super Nintendo Entertainment System, abbreviated as SNES, in Europe and the Americas) is a home video game console developed by Nintendo. It is the successor to the Nintendo Entertainment System (NES/Famicom). The Super Nintendo was first released in Japan on November 21, 1990, in North America on August 13, 1991, and in Europe on April 11, 1992. Its controller introduced shoulder buttons (L/R) for the first time and established the now-standard ABXY button layout. Globally, the Super Nintendo sold over 49.1 million units.
+Notes:
+If a game fails to launch or displays graphical glitches, try switching to an alternative emulator core.
+How to Use Cheat Codes:
+Open the emulator menu and navigate to Cheats → Load Cheat File (Overwrite).
+Select the cheat file corresponding to the current game.
+Enable the desired cheats and click Apply Changes to activate them.

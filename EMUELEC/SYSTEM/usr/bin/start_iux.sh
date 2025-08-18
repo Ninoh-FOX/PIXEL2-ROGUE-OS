@@ -1,9 +1,8 @@
 #!/bin/bash
-# SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2024 ROCKNIX (https://github.com/ROCKNIX)
+# SPDX-License-Identifier: GPL-2.0
+# Copyright (C) 2023 JELOS (https://github.com/JustEnoughLinuxOS)
 
-### setup is the same
-. $(dirname $0)/es_settings
+. /etc/profile
 
 if ! systemctl is-active --quiet iuxway.service; then
     systemctl start iuxway.service
@@ -20,4 +19,4 @@ if [ $(gpudriver) == "panfrost" ]; then
    /usr/bin/show ${IMAGE} &
 fi
 
-iux
+/storage/iux/thisui

@@ -1,0 +1,16 @@
+N64 Emulator Configured with eparalleN64-ES
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The N64 emulator configured with eparalleN64-ES has all special effects enabled, but general speed performance.
+Notes:
+No need to modify the default emulator settings.
+Nintendo 64 (N64)
+The Nintendo 64 (abbreviated as N64) is Nintendo's third-generation home video game console, succeeding the Super Famicom (SFC) and serving as a pioneer in 64-bit consumer electronics computing. It was released in Japan on June 23, 1996, in North America on September 29, 1996, in Europe and Australia on March 1, 1997, and in France in 1997.
+The N64 controller is regarded as one of the most important input devices in gaming history, featuring three groundbreaking designs: an analog joystick, trigger buttons, and a vibration pack. Iconic titles such as The Legend of Zelda: Ocarina of Time and Super Mario 64 were released on the N64. Its successor is the Nintendo GameCube (NGC).

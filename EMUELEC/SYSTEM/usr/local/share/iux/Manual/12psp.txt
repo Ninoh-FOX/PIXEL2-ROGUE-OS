@@ -1,0 +1,6 @@
+PPSSPP Emulator
+PPSSPP is an excellent PSP emulator, widely recognized for its outstanding compatibility and fast emulation speed.
+Press R2 to switch between joystick and D-pad.
+Long press L2 key to accelerate
+
+

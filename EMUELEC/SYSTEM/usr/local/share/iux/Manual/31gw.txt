@@ -1,0 +1,12 @@
+Game & Watch Game Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+Game & Watch (Japanese: ゲーム & ウオッチ) is a portable gaming console released by the renowned game company Nintendo from 1980 to 1991. Considered the prototype of modern handheld gaming devices, it was designed by Gunpei Yokoi of Nintendo. The concept originated from Yokoi's observation of a salaryman idly playing with a calculator during a Shinkansen ride, combining the ideas of video games and digital quartz watches, which inspired the device's name.
+A total of 59 games were released worldwide in the Game & Watch series. To coincide with the launch of the GAME&WATCH version of Donkey Kong, Yokoi specially designed the cross-shaped directional pad. Over three years, GAME&WATCH sold 32 million units globally.

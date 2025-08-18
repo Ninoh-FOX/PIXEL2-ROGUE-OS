@@ -1,0 +1,3 @@
+explor Dual-Pane File Manager
+Press Y and X simultaneously to bring up the menu in the software.
+Press Y to exit the software.

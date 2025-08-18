@@ -1,0 +1,38 @@
+Legends of Jin Yong Martial Heroes
+Button Instructions:
+A: Confirm
+B: Menu
+Cheat Instructions:
+Hold L1 during combat: Your attacks deal 9999 HP damage.
+Hold R1 during combat: You take 0 HP damage from attacks.
+"Legends of Jin Yong Martial Heroes MOD: Tribulation of Heavenly Books 2.0"
+In the second half of 2020, Laofeiyu brought a PSP version of the Legends of Jin Yong Martial Heroes MOD—Tribulation of Heavenly Books—and asked if I could port it to the 350H. Upon testing, I found numerous bugs, including text display issues and unexplained crashes. After porting a preliminary version for internal testing, I struggled to resolve the core problems. At the time, it seemed the SDL 1.0 framework on the 350H might not support this MOD, so I 搁置 (shelved) the project. Later, I heard that Mainshen had ported Tribulation of Heavenly Books to the PRO with near-perfect results, which made me think the 350H was incompatible. I even deleted the game to free up space.
+In early April, a group member named Mengqiqi asked about the MOD, reigniting my interest. Mengqiqi wanted to run it on his MINI and asked if there was a suitable version. I realized the old test files were deleted, so I attempted the port again. This time, the results seemed better than the previous year—perhaps due to SDL updates when Mainshen worked on Chinese Paladin later. Mainshen assisted by debugging the code, while I adjusted text scaling and sizes.
+The biggest challenges were incomplete music (some MP3s wouldn’t play, temporarily replaced with music from Rainbow Castle) and text scaling issues. Mainshen provided a complete set of MIDI music and fixed text rendering, though initial builds had overlapping menus, missing combat effects, and lag. Through iterative testing and collaboration, Mainshen resolved these issues one by one—truly impressive!
+Key Bug Fixes Compared to Last Year’s Version:
+Fixed text overflow caused by un-scalable dialogue during cutscenes.
+Addressed combat lag and disappearing characters when enemies attack.
+Restored missing combat special effects.
+Mainshen added weather effects (clouds, rain, snow) on the overworld map via code.
+Fixed overlapping menu frames after closing menus.
+Resolved flickering/disappearing text in the initial menu and attribute selection.
+Fixed crashes when viewing / 对话 (interacting with) Guiguzi in Longmen Inn or Zhuangzi in Gaochang Maze (no image issues).
+Fixed infinite loops at exits in Jin Snake Cave, Capital, etc.
+Addressed frozen screens in single battles (e.g., Shi Potian training in Xieke Island, Yilin vs. Buji Monk in Hengshan).
+Fixed abnormal exits in Wan’an Temple, Heimuya Back Garden, Xiangyang Frontline, etc.
+Stopped Heimuya from returning directly to the overworld upon entry.
+Prevented random crashes after changing special skills in Martial Arts Manor (e.g., forced deletion of invalid moves like Hu Fei’s "Fox Howl Slash").
+Made Yang Xiao’s departure from the party mandatory (previously stuck).
+Adjusted menu display to 7 items per row with revised text sizing for clearer info.
+Increased item limit from 200 to 400 (prevents items from vanishing when exceeding the cap).
+Improved view boundaries for clearer overworld navigation.
+Added Mainshen’s cheat codes (hold R1 for 0 damage, L1 for 9999 damage—ideal for story-focused players, less recommended for challenge seekers).
+Updated game icons, menu backgrounds, and text colors.
+Enabled random playback of all in-game music on the overworld.
+These fixes are significant, especially since some bugs originated in the PSP version. Due to time constraints, only the main storyline was fully tested—the evil route is unconfirmed.
+Known Remaining Bugs:
+Yang Xiao disappears and cannot return to Martial Arts Manor after forced departure.
+Potential data corruption when changing special skills (verify after saving/loading).
+Possible crashes with Guiguzi/Zhuangzi due to residual data issues.
+Minor color blocks on floors in some scenes.
+The evil route and other edge cases need further testing. Tribulation of Heavenly Books, built on the Soaring Dragon Across the Sky base, adds new characters, skills, and side quests, making it more immersive. While different from Soaring Dragon, it’s a worthy addition for 350H/MINI users. Mengqiqi provided a version 4.0, but preliminary tests showed compatibility issues due to its high version number—porting it remains unlikely. Enjoy this SDL 2.0 port and explore the rich Jin Yong universe!

@@ -1,0 +1,23 @@
+Classic digger game from the 386 era, it was the first PC game I played as a child and has greatimental value to me, so I ported it over to share with everyone, it can also be considered as a bit of nostalgia therapy.
+Features:
+1. The game been adapted to work with the miniplus driver, the sound is an emulation of a PC speaker and has a very retro feel to it.
+2. All the expansion levels on the digger official website have been included, you can also refer to the instructions to design your own levels.
+3. Official website: http://www.digger./index.html
+4. Added dynamic switching and game speed difficulty controls.
+Controls:
+A/B/X/Y: Fire bullets
+Select: Toggle between normalhard game mode, the overall style of the screen will also change
+Start: Pause game
+L1/R1: Speed up and slow down the game
+L2 Toggle sound effects on/off
+R2: Toggle background music on/off
+F1: Exit game
+
+Self-made level notes:
+If you want add your own levels, you can refer to the level file definition in the /storage/game/digger directory (it is actually a text file and can be opened with any editor). The first two bytes at the beginning of each file are fixed as "N" (the first one is a space), and the rest of the content is divided (150 bytes, i.e. 10 rows and 15 columns) representing a map, with a total of 8 maps, adding up to a of 1203 bytes (including the end of file marker).
+The characters representing the map elements are as follows:
+Space — Unmined area
+V Vertical mined channel
+H — Horizontal mined channel
+C — Diamond position
+B — Money bag position

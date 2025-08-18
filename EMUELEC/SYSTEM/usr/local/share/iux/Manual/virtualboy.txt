@@ -1,0 +1,14 @@
+Virtual Boy Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Nintendo Virtual Boy was a 32-bit console intended to replace the Super Famicom (SFC) before the launch of the N64. Designed by Gunpei Yokoi, the creator of the Game Boy, it used 3D movie-like technology to generate stereoscopic effects. Unfortunately, due to poor market response and its unattractive design—particularly its failure in the Japanese and American gaming markets—the Virtual Boy was never released in Europe or Australia. It quickly faded from history, leading Gunpei Yokoi to leave Nintendo.
+The Virtual Boy (VB) was Nintendo's first attempt at pure VR (virtual reality) gaming. (The world's first 3D console was released by SEGA in 1982, and the first 3D handheld by TOMY in 1983.) However, it remains one of Nintendo's few major failures to date. Launched in the U.S. in 1995, its high price of $179 and a gameplay style even avant-garde Americans struggled to adapt to meant it never sold well.
+The VB featured a NEC V810 CPU, a 20 MHz 32-bit RISC chip, with a display resolution of 384x224 pixels, offering 4 colors and 32 levels of grayscale (leaning toward red rather than pure black-and-white). As a home console with a built-in display system, it used a head-mounted binocular design and polarized image-splitting technology to create stereoscopic visuals. Its sound system included a 16-bit stereo setup with built-in speakers, and it came with a unique symmetrical 6-button dual-control joystick. Despite its 32-bit CPU, the VB was not classified as a "next-gen" console. In hindsight, its failure stemmed from its premature focus on stereoscopic gaming: while other consoles were intensifying their 2D and 3D capabilities, the VB abandoned the 细腻华丽 (delicate beauty) of 2D and the immersive power of 3D, a bold but ultimately unwise decision.
+Nintendo officially discontinued the VB in 1997. With an extremely short lifespan, only 22 games were released: 19 in Japan and 14 in the U.S. Four titles remained Japan-exclusive, and eight more were never published. As an experimental product, the VB was a total failure, yet its unconventional design left a lasting impression.

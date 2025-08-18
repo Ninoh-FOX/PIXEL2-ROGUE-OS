@@ -1,0 +1,9 @@
+PS Duck Station Independent Emulator
+This emulator is powerful, but the menu is in English, those who know how to play can study it, the default have been made
+
+The shortcut keys are as follows:
+Main menu        SE+ST
+In-game menu     SE+X
+Quick save       SE+R1
+Quick load       SE+L1
+Save screenshot  SE+A

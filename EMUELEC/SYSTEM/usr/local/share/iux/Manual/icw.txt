@@ -1,0 +1,11 @@
+Icewaymusic Player Version 1.5 Update:
+Added multi-language support (Simplified Chinese, English, Japanese, Korean, German, Spanish).
+Added a white cassette tape theme.
+Added LR quick switching for album support.
+Optimized asynchronous loading of playlist cache—only the first load is slow (about 4 minutes for 200 songs), with fast loading thereafter.
+Added a folder module to play songs from custom folders (selecting a song in the folder will automatically switch the playlist to all songs in the current folder).
+Fixed the issue with random playback not working.
+Fixed unresponsive buttons and lack of alerts when turning on the screen after standby with the screen off.
+Fixed misoperations caused by long-held LR refresh buttons not being released.
+Made minor detail adjustments and bug fixes.
+VIP authentication now supports Wi-Fi network activation—no need to copy keys; 开通 VIP can be done online with Wi-Fi.

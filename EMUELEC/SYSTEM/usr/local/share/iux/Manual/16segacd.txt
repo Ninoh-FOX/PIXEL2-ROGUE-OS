@@ -1,0 +1,22 @@
+Picodrive Core MD-CD Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Picodrive core is a highly compatible MD emulator capable of running Sega 16/32-bit games and MD-CD titles. The SEGA Mega Drive CD features:
+Processor: Motorola 68000 (7.67 MHz) + APU Z80A (3.58 MHz)
+Memory: M-RAM 72K BYTE, V-RAM 64K BYTE
+Graphics: Maximum 512 colors, resolution up to 320x448
+Dimensions: 280x212x70mm
+Accessories: Controller, dedicated AC transformer (DIN socket); optional modem and CD-ROM drive.
+Launched in the early 1990s during the CD boom, this first Genesis accessory allowed 16-bit full-motion video gaming.
+Reasons for failure:
+High price of $299.
+Released in the late stage of 16-bit gaming.
+Offered minimal improvement to gameplay experience.
+It sold only 6 million units during its short lifespan. More critically, the Sega CD’s poor product support damaged Sega’s reputation, ultimately contributing to the company’s downfall in the console hardware market.

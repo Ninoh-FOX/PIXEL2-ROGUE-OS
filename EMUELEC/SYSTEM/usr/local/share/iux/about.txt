@@ -1,0 +1,26 @@
+iux ui arm 2.5
+---------------------
+2025全新的IUX UI2 在开发组不写努力下
+和大家见面了，本次2.5对UI进行的重新设计
+加入了很多细节改进，带给大家极致的体验
+---------------------
+感谢赞赏过的小伙伴们！iux与你们同在！
+感谢gkd官方：老张，托马斯的大力支持！
+GKD公众号：GameKiddy小屁孩掌机ZPG掌机
+iux ui交流群：515304392
+---------------------
+Eso的作者是podulator，
+二次开发随着2.0的发布
+已经改写了超过80%的代码
+完全可以算是一个独立的版本了
+不过还是再次感谢作者的分享
+MOD by neights
+skin by luer
+pack by xie
+
+GMenuNX is a fork of GMenu2X, developed by pingflood to Retrogame RS-97, released under the GNU GPL license v2.
+Website: https://github.com/pingflood/GMenuNX
+
+GMenu2X is developed by Massimiliano "Ryo" Torromeo, and is released under the GPL-v2 license.
+Website: http://mtorromeo.github.com/gmenu2x
+E-Mail & PayPal account: massimiliano.torromeo@gmail.com

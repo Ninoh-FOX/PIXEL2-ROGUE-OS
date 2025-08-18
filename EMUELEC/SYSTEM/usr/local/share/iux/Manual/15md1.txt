@@ -1,0 +1,17 @@
+Picodrive Core MD Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+The Picodrive core is a highly compatible MD emulator capable of running Sega 16/32-bit games and MD-CD 2D games. The Last Dynasty (Sega Genesis/Mega Drive, the fifth generation) may have truly nurtured a generation of Chinese gamers. It used Motorola 68000 and Z80 processors, and its performance was indeed outstanding for its time. Sega's dedication ensured a continuous stream of excellent games on the MD. Although it lost to the Super Nintendo, it remains a classic gaming console in the eyes of older gamers.
+Notes:
+If a game fails to launch or experiences screen glitches, try switching the core.
+How to Use Cheat Codes:
+Open the menu and select Cheats → Load Cheat File (Overwrite) → Choose the cheat file for the current game.
+Finally, enable the desired cheat codes and click Apply Changes.
+
+

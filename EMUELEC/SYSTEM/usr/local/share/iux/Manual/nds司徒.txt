@@ -1,0 +1,22 @@
+The Great Master of Si Tu independently modified the NDS emulator to adapt to the pixel 2.
+Key description:
+...: Hot
+...+l: Close the emulator
+...+l2: Quick load
+...+r: Fast forward (single click switch)
+.. +r2: Quick save
+...+left/right: Switch screen combination
+...+up/down: Touch pen AB screen (touch pen-up combination key)
+...+se: Emulator menu
+...+st: Quick settings
+...+a: Switch preset screen
+.. +a: Touch screen (touch pen pop-up combination key)
+...+b: Switch filter clarity soft
+...+x: Screenshot... y: Switch border image
+...+y: Switch pen style (touch pen pop-up combination key)
+
+————
+l2: Switch screen
+r2: Touch pen switch
+b: Cancel
+

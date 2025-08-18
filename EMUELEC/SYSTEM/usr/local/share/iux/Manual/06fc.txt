@@ -1,0 +1,18 @@
+Nestopia Core FC Emulator
+
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The Nestopia core FC emulator supports cheat codes.
+The FC (Family Computer) game console is an 8-bit third-generation home video game console manufactured, published, and sold by Nintendo. Its official name in Japan is "Family Computer" (Japanese: ファミリーコンピュータ，Famicom), commonly known as the "Red and White Machine." It was released in Japan on July 15, 1983. The Western version is called the Nintendo Entertainment System (NES), commonly known as the "Gray Machine," and was released in the United States on October 18, 1985. The console's design and game cartridges used in Western regions were completely different from the Japanese Famicom. The Famicom was the best-selling console of its time, with cumulative global sales exceeding 61 million units. The emergence of the FC had a profound impact on the video game industry, helping the U.S. gaming market recover from the 1983 crash and establishing Nintendo's leading position in the modern gaming world. Its successor, the Super Nintendo, was released in 1990.
+Notes:
+If a game fails to launch or experiences screen glitches, try switching the core.
+How to use cheat codes:
+Open the menu and select Cheat Codes → Load Cheat Code File (Overwrite) → Choose the cheat code file for the current game.
+Finally, enable the cheat codes you want to use and click Apply Changes.

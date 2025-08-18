@@ -1,0 +1,10 @@
+MPV player
+A multi-format video player that supports online live sources
+Exit: SE SE
+Previous: Up on the cross key
+Next: on the cross key
+Mute: X
+Show information: Y
+Subtitle: R1
+Subtitle hide: R2
+Volume: Side volume key

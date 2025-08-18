@@ -1,0 +1,11 @@
+Beetle-Lynx Core Atari Console Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+Atari was the first company to introduce home video game consoles. Computer games added a unique landscape to the end of the 20th century, rapidly evolving into a massive $15 billion industry. It is said that in 1992, the profits from Nintendo's game consoles alone (a Japanese company) were equivalent to those of the entire Hollywood film industry—and exceeded the combined profits of the three major U.S. television networks. Interestingly, the first commercially successful home video game console was created by an American "long-haired man in a flashy T-shirt" (in the words of the best-selling book The Silicon Valley Fever)—Nolan Bushnell, a passionate gamer hailed by serious computer historians as the "father of the video game industry." He founded the world's first home video game console company, Atari, which once generated an astronomical $2 billion in annual sales. However, the company gradually declined from its peak and finally ceased operations in 1998 after years of struggling.

@@ -1,0 +1,20 @@
+Select a game to run the emulator:
+Press MENU + START to enter quick settings and set the language to chinese_cn (or another option).
+Press B to exit the settings menu; re-enter to switch to Simplified Chinese.
+Press MENU + SELECT to access emulator settings or related options.
+Other operations can use key combinations for quick actions:
+L2 => Swap upper and lower screens
+MENU + R1 => Fast-forward
+MENU + R2 => Quick save
+MENU + L2 => Quick load
+MENU + L1 => Exit emulator
+MENU + START => Quick menu settings (including frequency, mask, AB screen combination mode, default quick screen)
+MENU + Y => Switch theme patterns
+MENU + A => Switch to default quick screen (toggle between two commonly used display modes for gaming)
+MENU + Left/Right Arrow => Switch AB screen combination mode
+Enabling the stylus:
+R2 => Toggle stylus
+MENU + Y => Switch stylus appearance
+MENU + UP => Move stylus to upper screen
+MENU + DOWN => Move stylus to lower screen
+MENU + X => View legend

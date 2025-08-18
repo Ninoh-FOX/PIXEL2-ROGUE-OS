@@ -1,0 +1,19 @@
+PCE-fast Core PC Engine Emulator
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The PCE-fast core PC Engine emulator supports cheat codes.
+Developed jointly by two Japanese companies, Hudson and NEC, the console was released by NEC in 1987. The PC Engine was the first home console with an optional CD module.
+Specifications:
+CPU: 8-bit 7.2MHz (with a custom color processing unit)
+Initially, Hudson was seeking financial support for its designed home console, while NEC was looking for a way to enter the video game market. The two sides quickly reached a partnership. The PC Engine was a very compact home console, primarily due to its highly efficient three-chip architecture and the HuCard—a credit card-sized data cartridge. It used an enhanced MOSTechnology 65C02 processor, a specially designed 16-bit graphics processor, and a dedicated video encoding chip, all designed by Hudson.
+The PC Engine was extremely popular in Japan, and shortly after its release, it outsold Nintendo's Famicom (FC) in sales (more than 12 consoles were launched between 1987 and 1993). It could display 512 colors simultaneously at different resolutions and had robust graphics tiling capabilities. Hudson's chroma encoder could transmit more vivid and colorful video signals than the FC and Sega Mega Drive, though the system was not publicly released until 1990.
+
+
+

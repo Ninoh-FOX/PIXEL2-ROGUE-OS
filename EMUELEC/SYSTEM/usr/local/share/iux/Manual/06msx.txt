@@ -1,0 +1,13 @@
+MSX Computer Games
+The universal shortcut key functions are as follows:
+Menu: Right side menu key
+Exit: SE+ST pressed twice
+Quick save: SE+R1 Quick load: SE+L1 Acceleration: SE+R2
+Brightness: SE+Arrow keys up/down
+Volume: Left side volume/SE+key up/down
+Auto-fire: Hold R2 down without releasing, and then press the key you want to turn on auto-fire,
+      e.g.2 held down   A is on A key auto-fire, press B is B auto-fire, and to turn off auto-fire just hold R2 the activated autofire key again.
+	  
+The MSX personal computer is a general term for 8-bit and 16-bit home computers proposed by Microsoft (USA) in 1983, and it also serves as a collective name for three generations of products, including MSX2 (1985), MSX2+ (1988), and MSXturboR (1990). Its models and appearances vary by manufacturer. Originally designed as a low-end personal computer for home use, it became extremely popular in Japan and other regions due to its relatively affordable price compared to other expensive personal computers of the time.
+The MSX was an early personal computer that was highly popular in Japan and is still used today (primarily by enthusiasts). Similar to the Apple II, it boots into a BASIC system, but it has significantly better graphics capabilities, supporting 16-color displays and joysticks (though the Apple II also had joysticks). Manufactured by various companies, most MSX models featured an integrated keyboard and main unit. The MSX used a Zilog Z80 CPU, and its final model, the MSX TURBOR produced by Panasonic, had a dual-CPU design.
+The MSX was not only an early computer but also a gaming console. Before Nintendo's FC (Famicom) dominated the market, there was another highly popular gaming console in Japan's home console market: the MSX. The MSX platform, jointly launched by companies such as ASCII, Microsoft, Panasonic, Sony, Yamaha, Daewoo, and Philips, competed with the FC during the same period. Like the FC, the MSX was an 8-bit machine with graphics quality comparable to the FC. If you find FC games insufficient, trying MSX games will be an excellent choice.

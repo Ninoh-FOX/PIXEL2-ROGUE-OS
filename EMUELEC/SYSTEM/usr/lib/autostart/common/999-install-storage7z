@@ -146,6 +146,50 @@ then
     reboot
 fi
 
+#upgrade iux
+
+IUX="/storage/iux/thisui"
+
+IUX_HASH="923c630497f5869cbacd1cbf3b67f1539f6b38ae925e2648727049aac4cf9868"
+
+SRC_iux="/usr/local/share/iux/"
+DST_iux="/storage/iux/"
+
+
+if [[ -f "$IUX" ]]; then
+    CURRENT_HASH=$(sha256sum "$IUX" | awk '{print $1}')
+
+    if [[ "$CURRENT_HASH" != "$IUX_HASH" ]]; then
+        echo "IUX Invalid hash, rewrite files..."
+        cp -r "$SRC_iux"* "$DST_iux"
+        chmod -R +x "$DST_iux"
+        sync
+    else
+        echo "IUX Correct hast."
+    fi
+fi
+
+RUNNER_DRASTIC="/storage/drastic/runner"
+
+RUNNER_HASH="80f0861993f78fe4eadc2784950e4ea7af037857f28bd606c9867feebcb3ee6d"
+
+SRC_drastic="/usr/local/share/drastic/"
+DST_drastic="/storage/drastic/"
+
+
+if [[ -f "$RUNNER_DRASTIC" ]]; then
+    CURRENT_HASH=$(sha256sum "$RUNNER_DRASTIC" | awk '{print $1}')
+
+    if [[ "$CURRENT_HASH" != "$RUNNER_HASH" ]]; then
+        echo "DRASTIC Invalid hash, rewrite files..."
+        cp -r "$SRC_drastic"* "$DST_drastic"
+        chmod -R +x "$DST_drastic"
+        sync
+    else
+        echo "DRASTIC Correct hast."
+    fi
+fi
+
 ldconfig
 sync
 
