@@ -50,9 +50,15 @@ Put in EMUELEC partition a BMP image with 480*640 size and 24bits color.
 
 Note: This not is the boot system logo.
 
+### change the brightness keys:
+
+```
+select + vol keys
+```
+
 ### sreenscreper ###
 
-You can use the scraper app from the tools. It's a program with a graphical interface that allows you to download images or screenshots from ROMs by system. You need a ScreenScraper user account. It can use up to six download engines.
+You can use the scraper app from the tools (only works in panfrost GPU). It's a program with a graphical interface that allows you to download images or screenshots from ROMs by system. You need a ScreenScraper user account. It can use up to six download engines.
 
 Or, if you need all the metadata (ROM name, video, etc.), you can use the **"Switch ES launcher"** tool. This tool allows you to switch between the two versions of Emulation Station, switching between the original version so you don't lose features like overlay settings and USB data transfer, and the universal version with scraper support. The advantage is that if you need to extract a game's data, with the **"Switch ES launcher"** tool, you can temporarily load the ES using the scraper function. Then, from the same tool, you can revert to the original version of the ES.
 
